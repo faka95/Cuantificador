@@ -1,4 +1,6 @@
-package org.exa;
+	package org.exa;
+
+import java.io.BufferedReader;
 
 public class FileManager {
     
@@ -74,9 +76,33 @@ public class FileManager {
 		// return docentes;
     }
 
-    public static void guardarFormula(String formula){}
+    public static void guardarFormula(String formula){
 
-    public static void cargarFormula(String directorio){}
+    }
+
+    /** 
+	 * Lee desde un directorio la formula utilizada para calcular ayudantes por catedra y la carga en la clae "Estructura".
+	 * @param directorio un directorio abosoluto que contiene un archivo de texto con la formula en su primer linea.
+	 * @return string con la formula a utilizar
+	 */
+    public static void cargarFormula(String directorio) {
+    	String formula;
+    	
+    	try {
+			FileReader fileReader = new FileReader(directorio);  
+			BufferedReader entry= new BufferedReader(fileReader);//creo el lector de archivos
+			String entrada = entry.readLine();	
+			if (entrada != null) {
+				formula = entrada;
+			}
+			entry.close();
+		}catch (FileNotFoundException e) {
+			System.out.println("Archivo de formula no encontrado \n");
+		}catch(Exception ie){
+			System.out.println("El archivo fomula se encuentra mal cargado, no se cargaron todos los datos \n");
+		}
+    	// return formula;
+    }
 
     public static void generarSalida(){}
 
