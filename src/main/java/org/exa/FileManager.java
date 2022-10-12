@@ -1,8 +1,10 @@
 	package org.exa;
 
-import java.io.BufferedReader;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class FileManager {
+	public class FileManager {
     
     /** 
 	 * Crea una lista de catedras leidas desde un csv y la carga en la clase "Estructura"
@@ -13,7 +15,7 @@ public class FileManager {
         List<Catedra> catedras = new ArrayList<>();
 		
 		try {
-			FileReader fileReader = new FileReader(directorio);  
+			FileReader fileReader = new FileReader(directorio);
 			BufferedReader entry= new BufferedReader(fileReader);//creo el lector de archivos
 			String entrada = new String(); 
 				
@@ -76,9 +78,18 @@ public class FileManager {
 		// return docentes;
     }
 
-    public static void guardarFormula(String formula){
-
-    }
+    public static void guardarFormula(String formula) throws IOException {
+		String path = Estructura.pathFormula;
+		try {
+			FileWriter fw = new FileWriter(path.substring(0,path.indexOf('.'))+".txt");
+			PrintWriter pw = new PrintWriter(fw);
+			pw.println(formula);
+			fw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new IOException(e);
+		}
+	}
 
     /** 
 	 * Lee desde un directorio la formula utilizada para calcular ayudantes por catedra y la carga en la clae "Estructura".
