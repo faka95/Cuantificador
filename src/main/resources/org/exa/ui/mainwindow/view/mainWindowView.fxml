@@ -16,7 +16,7 @@
             <Insets />
          </BorderPane.margin>
          <children>
-            <TableView prefHeight="308.0" prefWidth="600.0">
+            <TableView fx:id="table" prefHeight="308.0" prefWidth="600.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="Catedra" />
                 <TableColumn prefWidth="75.0" text="Ayudantes Asignados" />
@@ -27,7 +27,7 @@
             </TableView>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" text="Aplicar Formula" />
+                  <Button mnemonicParsing="false" onAction="#AccionBotonAplicarFormula" text="Aplicar Formula" />
                </children>
             </HBox>
          </children>
