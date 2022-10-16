@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="250.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.exa.ui.Window2.view.Window2Controller">
+   <center>
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="258.0" prefWidth="229.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField id="direccionArchDocentes" fx:id="direccionArchCatedras" />
+            <TextField id="direccionArchCatedras" fx:id="direccionArchDocentes" />
+            <Button mnemonicParsing="false" onAction="#aceptar" text="Aceptar" />
+            <Button fx:id="cancelar" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

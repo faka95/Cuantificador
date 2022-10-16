@@ -16,6 +16,8 @@ public class MainWindow extends Application{
 	
 	static Stage primaryStage;
 	private BorderPane mainLayout;
+	public static String direccionArchivoDocentes=new String();
+	public static String direccionArchivoCatedras=new String();
 	public static Estructura estructura;
 
 	@Override
@@ -44,7 +46,6 @@ public class MainWindow extends Application{
 	public static void newWindow() {
 		Window2 w = new Window2();
 		w.show(primaryStage);
-		
 	}
 	
 	public static void main(String[] args) {
