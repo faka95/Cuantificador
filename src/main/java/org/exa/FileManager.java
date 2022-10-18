@@ -85,7 +85,7 @@ import java.util.List;
 		try {
 			FileWriter fw = new FileWriter(path.substring(0,path.indexOf('.'))+".txt");
 			PrintWriter pw = new PrintWriter(fw);
-			pw.println(formula);
+			pw.print(formula);
 			fw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
