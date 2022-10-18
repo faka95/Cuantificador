@@ -40,17 +40,14 @@ import java.util.List;
 			System.out.println("El archivo catedras se encuentra mal cargado, no se cargaron todos los datos \n");
 		}
         Estructura.catedras = catedras;
-		// return catedras;
     }
 
     /** 
-	 * Crea una lista de docentes leidos desde un csv y la carga en la clase "Estructura"
+	 * Crea una lista de docentes leidos desde un csv y la carga en la clase "Estructura, para que funcione correctamente es necesario ejecutar previamente el cargarCatedras"
 	 * @param directorio un directorio abosoluto que contiene un csv con los datos de los docentes
 	 * @return 
 	 */
     public static void cargarDocente(String directorio){
-        List<Docente> docentes = new ArrayList<>();
-		
 		try {
 			FileReader fileReader = new FileReader(directorio);  
 			BufferedReader entry= new BufferedReader(fileReader);//creo el lector de archivos
@@ -60,12 +57,19 @@ import java.util.List;
 		        //Procesamiento de los datos
                 String datos[] = entrada.split(",");
                 String nombre = datos[0];
-                int horasT = Integer.parseInt(datos[1]);
-                int horasP = Integer.parseInt(datos[2]);
-                int horasTP = Integer.parseInt(datos[3]);
-                int horasPE = Integer.parseInt(datos[4]);
-                Docente catedra = new Docente(nombre, horasT, horasP, horasTP, horasPE);
-		        docentes.add(catedra);
+				String nombreCatedra = datos[1];
+                int horasT = Integer.parseInt(datos[2]);
+                int horasP = Integer.parseInt(datos[3]);
+                int horasTP = Integer.parseInt(datos[4]);
+                int horasPE = Integer.parseInt(datos[5]);
+                Docente docente = new Docente(nombre, horasT, horasP, horasTP, horasPE);
+		        Catedra catedra = Estructura.getCatedraByName(nombreCatedra);
+				if(catedra != null){
+					catedra.agregarDocente(docente);
+				}
+				else{
+					System.out.println("La catedra del docente " + nombre + " no existe");
+				}
 			}
 			entry.close();
 			
@@ -74,8 +78,6 @@ import java.util.List;
 		}catch(Exception ie){
 			System.out.println("El archivo docentes se encuentra mal cargado, no se cargaron todos los datos \n");
 		}
-        Estructura.docentes = docentes;
-		// return docentes;
     }
 
     public static void guardarFormula(String formula) throws IOException {
@@ -97,7 +99,7 @@ import java.util.List;
 	 * @return string con la formula a utilizar
 	 */
     public static void cargarFormula(String directorio) {
-    	String formula;
+    	String formula = new String();
     	
     	try {
 			FileReader fileReader = new FileReader(directorio);  
@@ -112,7 +114,7 @@ import java.util.List;
 		}catch(Exception ie){
 			System.out.println("El archivo fomula se encuentra mal cargado, no se cargaron todos los datos \n");
 		}
-    	// return formula;
+    	Estructura.formula = formula;
     }
 
     public static void generarSalida(){}
