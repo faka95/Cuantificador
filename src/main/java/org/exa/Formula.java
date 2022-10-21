@@ -7,6 +7,11 @@ import org.mariuszgromada.math.mxparser.Expression;
 
 public class Formula {
 
+    /**
+     * Aplica la formula con todos sus parametros obtenidos de los archivos y contemplando casos especiales.
+     * @param minimoUno es una variable boolean donde nos informa atraves de la interfaz si se necesita como minimo un interino.
+     * @return boolean informando si se pudo aplicar la formula.
+     */
     public boolean aplicarFormula(boolean minimoUno){
         int horasP, horasPE, o, horasTP;
         float n;
@@ -47,6 +52,7 @@ public class Formula {
             e = new Expression(Estructura.formula, nVar, oVar, pVar, peVar, tpVar, qpVar, qpeVar);
 
             int resultado = (int)Math.round(e.calculate());
+
             // Casos especiales
             if(resultado == 0 && minimoUno)
                 resultado = 1;
@@ -60,6 +66,12 @@ public class Formula {
         return true;
     }
 
+    /**
+     * Calcula la proporcion de alumnos por docente de cada anio.
+     * @param catedraAsociada el parametro define un objeto de tipo Catedra.
+     * @return un Double que es el resultado de docentes segun el anio de la materia.
+     */
+
     public  Double  getQP (Catedra catedraAsociada){ 
         Double resultado= 1.0;
         if ((catedraAsociada.getHorasTP() == 0 ) && (catedraAsociada.getHorasP() == 0))
@@ -71,6 +83,11 @@ public class Formula {
         return resultado;    
     }
 
+    /**
+     * Calcula la proporcion de alumnos por docente segun el tipo de practica especial.
+     * @param catedraAsociada el parametro define un objeto de tipo Catedra.
+     * @return un Double que es el resultado de docentes segun el tipo de practica especial.
+     */
     public  Double  getQPE (Catedra catedraAsociada){
         Double resultado= 1.0;
         if ((catedraAsociada.getHorasTP() == 0 ) && (catedraAsociada.getHorasP() == 0))

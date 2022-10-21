@@ -103,7 +103,8 @@ public class Catedra {
     }
 
     public List<Docente> getDocentes() {
-        return docentes;
+        List<Docente> aux = this.docentes;
+        return aux;
     }
 
     public int getCantDocentes() {
