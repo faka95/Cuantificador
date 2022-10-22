@@ -119,6 +119,20 @@ import java.util.List;
     	Estructura.formula = formula;
     }
 
-    public static void generarSalida(){}
+    public static void generarSalida(String catedra, int cantAyudantes)throws IOException{
+		try {
+			FileWriter fileWriter = new FileWriter(new File("ayudantes"+"/"+catedra+".csv"));
+			StringBuilder sb = new StringBuilder();
+			sb.append(catedra);
+			sb.append(" - ");
+			sb.append(cantAyudantes);
+			fileWriter.write(sb.toString());
+			fileWriter.close();
+		} catch (IOException e){
+			e.printStackTrace();
+			throw new IOException(e);
+		}
+		
+	}
 
 }
