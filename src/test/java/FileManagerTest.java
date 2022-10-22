@@ -42,4 +42,14 @@ public class FileManagerTest {
 
         Assertions.assertEquals(catedrasEsperadas,catedras); 
     }
+ 
+    @Test
+    public void cargarFormulaTest() throws Exception{
+       String path = System.getProperty("user.dir")+"/src/test/java";
+       FileManager.cargarCatedra(path + "/formula.txt");
+       String formulaEsperada = "2+2";
+       String formula = Estructura.formula;
+       
+       Assertions.assertEquals(formulaEsperada,formula);
+    }
 }

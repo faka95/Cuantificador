@@ -114,7 +114,7 @@ import java.util.List;
 		}catch (FileNotFoundException e) {
 			System.out.println("Archivo de formula no encontrado \n");
 		}catch(Exception ie){
-			System.out.println("El archivo fomula se encuentra mal cargado, no se cargaron todos los datos \n");
+			System.out.println("El archivo formula se encuentra mal cargado, no se cargaron todos los datos \n");
 		}
     	Estructura.formula = formula;
     }
