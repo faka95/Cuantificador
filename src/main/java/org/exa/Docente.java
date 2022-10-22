@@ -5,8 +5,8 @@ public class Docente {
     private String nombre;
     private int horasT;
     private int horasP;
-    private int horasTP;
     private int horasPE;
+    private int horasTP;
     public Docente(String nombre, int horasT, int horasP, int horasTP, int horasPE) {
         this.nombre = nombre;
         this.horasT = horasT;

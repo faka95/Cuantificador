@@ -23,13 +23,15 @@ import java.util.List;
 		        //Procesamiento de los datos
                 String datos[] = entrada.split(",");
                 String nombre = datos[0];
-                int horasT = Integer.parseInt(datos[1]);
-                int horasP = Integer.parseInt(datos[2]);
-                int horasTP = Integer.parseInt(datos[3]);
-                int horasPE = Integer.parseInt(datos[4]);
-                int cantInscriptos = Integer.parseInt(datos[5]);
-                int cantRindieron = Integer.parseInt(datos[6]);
-                Catedra catedra = new Catedra(nombre, horasT, horasP, horasTP, horasPE, cantInscriptos,cantRindieron);//va a haber un constructor sin lista?? si no hay que enviar una vacia
+				int anioMateria = Integer.parseInt(datos[1]);
+                int horasT = Integer.parseInt(datos[2]);
+                int horasP = Integer.parseInt(datos[3]);
+                int horasTP = Integer.parseInt(datos[4]);
+                int horasPE = Integer.parseInt(datos[5]);
+				int tipoPE = Integer.parseInt(datos[6]);
+                int cantInscriptos = Integer.parseInt(datos[7]);
+                int cantRindieron = Integer.parseInt(datos[8]);
+                Catedra catedra = new Catedra(nombre, anioMateria,horasT, horasP, horasTP, horasPE, tipoPE,cantInscriptos,cantRindieron);//va a haber un constructor sin lista?? si no hay que enviar una vacia
 		        catedras.add(catedra);
 			}
 			entry.close();
