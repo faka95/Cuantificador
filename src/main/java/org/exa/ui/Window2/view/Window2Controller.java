@@ -1,6 +1,5 @@
 package org.exa.ui.Window2.view;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -29,6 +28,9 @@ public class Window2Controller implements Initializable {
 	
 	private Stage stage;
 
+	/***
+	 * Crea y llama un FileChoser para seleccionar el archivo de docentes, y coloca el path en el TextField que corresponde
+	 */
 	@FXML
 	public void examinarArchDocentes() {
 		FileChooser fileChooser = new FileChooser();
@@ -37,6 +39,9 @@ public class Window2Controller implements Initializable {
 		String path=file.getPath();
 		this.direccionArchDocentes.setText(path);
 	}
+	/***
+	 * Crea y llama un FileChoser para seleccionar el archivo de catedras, y coloca el path en el TextField que corresponde
+	 */
 	public void examinarArchCatedras() {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Open Resource File");
@@ -45,7 +50,10 @@ public class Window2Controller implements Initializable {
 		this.direccionArchCatedras.setText(path);
 	}
 
-
+	/***
+	 * Accion del boton Aceptar. En el caso de que un TextField no este Vacio, guarda su contenido en la variable estatica
+	 *  correspondiente en MainWindow. Luego cierra la Ventana
+	 */
 	@FXML
 	public void aceptar(){
 		String direccionDocentes= direccionArchDocentes.getText();
@@ -59,11 +67,12 @@ public class Window2Controller implements Initializable {
 		}
 		cancelar.fire();
 	}
+	/***
+	 * Cierra la ventana sin guardar nada
+	 */
 	@FXML
-	private void cancelar(ActionEvent event) {
+	private void cancelar() {
 
-		/*Node source = (Node) event.getSource();
-		Stage stage = (Stage) source.getScene().getWindow();*/
 		stage.close();
 	}
 	@Override
@@ -71,12 +80,23 @@ public class Window2Controller implements Initializable {
 		direccionArchDocentes.setText(MainWindow.direccionArchivoDocentes);		
 		direccionArchCatedras.setText(MainWindow.direccionArchivoCatedras);
 	}
+	/***
+	 * Coloca el foco de la ventana en el boton de Cancelar
+	 */
 	public void setFocusOnCancel() {
 		this.cancelar.requestFocus();
 	}
+	/***
+	 * muestra la imagen en ImageView
+	 * @param image Imagen a mostrar
+	 */
 	public void setImage(Image image) {
 		visualizadorDeImagen.setImage(image);
 	}
+	/***
+	 * Da acceso a este controlador a la stage de la ventana  de modificar direcciones de archivos de entrada
+	 * @param stage Stage de la ventana
+	 */
 	public void setStage(Stage stage) {
 		this.stage = stage;
 	}

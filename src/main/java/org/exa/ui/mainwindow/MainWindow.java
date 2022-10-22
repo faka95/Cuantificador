@@ -17,9 +17,14 @@ public class MainWindow extends Application{
 	
 	private Stage primaryStage;
 	private BorderPane mainLayout;
+	
+	//Variables estaticas donde se almacenan las direcciones de los archivos de entrada y la formula
+	//puede ser que se las pase a la clase Estructura
+		
 	public static String direccionArchivoDocentes;
 	public static String direccionArchivoCatedras;
 	public static String direccionArchivoFormula=new String("formula.txt");
+	
 	private mainWindowController controller;
 	
 	
@@ -28,7 +33,12 @@ public class MainWindow extends Application{
 		direccionArchivoCatedras= new String();
 		direccionArchivoDocentes= new String();
 		this.primaryStage = primaryStage;
+		
+		//Titulo de la aplicacion
+		
 		primaryStage.setTitle("Cuantificador");
+		
+		//Carga de la Formula, hay que sacar el ejemplo cuando se unan las ramas del programa
 		
 		FileManager.cargarFormula(MainWindow.direccionArchivoFormula);
 		Estructura.formula="A=b*c";
@@ -36,7 +46,10 @@ public class MainWindow extends Application{
 		displayWindow();
 		
 	}
-
+	/***
+	 * Carga el archivo FXML que corresponde a la ventana principal, almacena el controlador en una variable, carga
+	 * la imagen para el icono de la aplicación, y muestra la ventana
+	 */
 	private void displayWindow() {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("view/mainWindowView.fxml"));
@@ -54,7 +67,10 @@ public class MainWindow extends Application{
 		primaryStage.show();
 		
 	}
-	
+	/***
+	 * Crea una instancia de la ventana de modificion de las direcciones de los archivos de entrada
+	 * y la muestra
+	 */
 	public void newWindow() {
 
 		//Window2 w = new Window2();
@@ -65,11 +81,18 @@ public class MainWindow extends Application{
 	public static void main(String[] args) {
 		launch(args);
 	}
-
+	/***
+	 * Crea una instancia de la ventana de modificion de la formula y la muestra
+	 */
 	public void WindowSetFormula() {
 		WindowsModificarF windowF = new WindowsModificarF(this);
 		windowF.show(primaryStage,primaryStage.getIcons().get(0));
 	}
+	
+	/***
+	 * Muestra la formula pasada por parametro en la ventana principal
+	 * @param s formula a ser mostrada
+	 */
 	public void setFormulaText(String s) {
 		this.controller.setFormulaText(s);
 	}

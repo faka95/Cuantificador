@@ -19,7 +19,12 @@ public class Window2 {
 	private Window2Controller controller;
 
 
-
+	/***
+	 * Carga el archivo FXML que corresponde a la ventana de modificacion de direcciones de archivos de entrada
+	 * , almacena el controlador en una variable y muestra la ventana
+	 * @param image Imagen para poner de titulo en la ventana
+	 * @param parentStage Stage de la ventana a la que pertence
+	 */
 	public  void show(Stage parentStage, Image image) {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Window2.class.getResource("view/Window2View.fxml"));
@@ -46,9 +51,7 @@ public class Window2 {
 
 
 
-	public void setIcon(Image image) {
-		stage.getIcons().add(image);		
-	}
+
 	
 
 }

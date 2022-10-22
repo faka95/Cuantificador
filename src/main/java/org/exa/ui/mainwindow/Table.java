@@ -13,7 +13,10 @@ public class Table {
 	public Table(TableView<ResultRow> t) {
 		table = t;
 	}
-	
+	/***
+	 * Coloca los elementos de la lista en la TableView pasada en el constructor de la clase
+	 * @param data
+	 */
 	public void setData(ArrayList<ResultRow> data) {
 		table.getColumns().clear();
 		table.getColumns().addAll(ResultRow.getColumns());

@@ -14,7 +14,9 @@ public class ResultRow {
 		this.catedra = catedra;
 		this.ayudantes = ayudantes;
 	}
-	
+	/***
+	 * Retorna las columnas del resultado en un formato que es aceptado por la clase TableView de JavaFX
+	 */
 	public static ArrayList<TableColumn<ResultRow, String>> getColumns(){
 		ArrayList<TableColumn<ResultRow, String>> columns = new ArrayList<TableColumn<ResultRow,String>>();
 		TableColumn<ResultRow,String> catCol = new TableColumn<ResultRow,String>("Catedra");

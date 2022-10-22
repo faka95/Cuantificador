@@ -20,11 +20,19 @@ public class WindowsModificarF {
 	private WindowModificarFController controller;
 	private MainWindow main;
 	
-
+	/***
+	 * Contructor de la clase que adminstra la ventana de modificion de la formula
+	 * @param main Ventana principal
+	 */
 	public WindowsModificarF(MainWindow main) {
 		this.main = main;
 	}
-	
+	/***
+	 * Carga el archivo FXML que corresponde a la ventana de modificacion de la formula
+	 * , almacena el controlador en una variable y muestra la ventana
+	 * @param image Imagen para poner de titulo en la ventana
+	 * @param parentStage Stage de la ventana a la que pertence
+	 */
 	public void show(Stage parentStage, Image image) {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(WindowsModificarF.class.getResource("view/WindowModificarF.fxml"));
@@ -38,6 +46,7 @@ public class WindowsModificarF {
 		controller.setMain(main);
 		Scene scene = new Scene(layout);
 		stage = new Stage();
+		controller.setStage(stage);
 		stage.setScene(scene);
 		stage.initModality(Modality.WINDOW_MODAL);
 		stage.initOwner(parentStage);
