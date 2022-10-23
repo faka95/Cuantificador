@@ -85,7 +85,7 @@ import java.util.List;
     public static void guardarFormula(String formula) throws IOException {
 		String path = Estructura.pathFormula;
 		try {
-			FileWriter fw = new FileWriter(path.substring(0,path.indexOf('.'))+".txt");
+			FileWriter fw = new FileWriter(path + "/formula.txt");
 			PrintWriter pw = new PrintWriter(fw);
 			pw.print(formula);
 			fw.close();
@@ -100,11 +100,11 @@ import java.util.List;
 	 * @param directorio un directorio absoluto que contiene un archivo de texto con la formula en su primer linea.
 	 * @return string con la formula a utilizar
 	 */
-    public static void cargarFormula(String directorio) {
+    public static void cargarFormula() {
     	String formula = new String();
     	
     	try {
-			FileReader fileReader = new FileReader(directorio);  
+			FileReader fileReader = new FileReader(Estructura.pathFormula);  
 			BufferedReader entry= new BufferedReader(fileReader);//creo el lector de archivos
 			String entrada = entry.readLine();	
 			if (entrada != null) {
