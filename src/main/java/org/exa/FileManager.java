@@ -46,7 +46,7 @@ import java.util.List;
 
     /** 
 	 * Crea una lista de docentes leidos desde un csv y la carga en la clase "Estructura, para que funcione correctamente es necesario ejecutar previamente el cargarCatedras"
-	 * @param directorio un directorio abosoluto que contiene un csv con los datos de los docentes
+	 * @param directorio un directorio absoluto que contiene un csv con los datos de los docentes
 	 * @return 
 	 */
     public static void cargarDocente(String directorio){
@@ -97,7 +97,7 @@ import java.util.List;
 
     /** 
 	 * Lee desde un directorio la formula utilizada para calcular ayudantes por catedra y la carga en la clae "Estructura".
-	 * @param directorio un directorio abosoluto que contiene un archivo de texto con la formula en su primer linea.
+	 * @param directorio un directorio absoluto que contiene un archivo de texto con la formula en su primer linea.
 	 * @return string con la formula a utilizar
 	 */
     public static void cargarFormula(String directorio) {
@@ -119,14 +119,16 @@ import java.util.List;
     	Estructura.formula = formula;
     }
 
-    public static void generarSalida(String catedra, int cantAyudantes)throws IOException{
+	/** 
+	 * Genera en el directorio pasado por parametro un listado en formato csv de las catedras encontradas en Estructura y la cantidad de ayudantes correspondientes segun la formula.
+	 * @param directorio directorio donde se generara el listado csv.
+	*/
+    public static void generarSalida(String directorio) throws IOException{
 		try {
-			FileWriter fileWriter = new FileWriter(new File("ayudantes"+"/"+catedra+".csv"));
-			StringBuilder sb = new StringBuilder();
-			sb.append(catedra);
-			sb.append(" - ");
-			sb.append(cantAyudantes);
-			fileWriter.write(sb.toString());
+			FileWriter fileWriter = new FileWriter(new File(directorio + "/salida.csv"));
+			for (Catedra c : Estructura.catedras){
+				fileWriter.write(c.getNombre() + "," + 0 + "\n"); // reemplazar 0 por getNroAyudantes(catedra) cuando este dicha funcion disponible
+			}
 			fileWriter.close();
 		} catch (IOException e){
 			e.printStackTrace();
