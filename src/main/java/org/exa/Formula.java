@@ -20,9 +20,9 @@ public class Formula {
 
         Expression e = new Expression(Estructura.formula);
         // el siguiente metodo retorna verdadero si la expresion es correcta
-        if(!e.checkSyntax())
+        if(!e.checkSyntax()) {
             return false;
-
+        }
         for (Catedra cat : Estructura.catedras) {
             n = (cat.getCantInscriptos() + cat.getCantRindieron())/2; //cantidad media de alumnos
 

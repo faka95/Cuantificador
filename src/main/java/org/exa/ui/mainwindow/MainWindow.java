@@ -40,7 +40,7 @@ public class MainWindow extends Application{
 		//Carga de la Formula, hay que sacar el ejemplo cuando se unan las ramas del programa
 		Estructura.formula="A=b*c";
 
-		FileManager.cargarFormula(Estructura.pathFormula);
+		FileManager.cargarFormula();
 		
 		displayWindow();
 		

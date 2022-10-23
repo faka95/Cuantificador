@@ -85,7 +85,7 @@ public static void cargarDocente(String directorio){
 public static void guardarFormula(String formula) throws IOException {
 	String path = Estructura.pathFormula;
 	try {
-		FileWriter fw = new FileWriter(path + "/formula.txt");
+		FileWriter fw = new FileWriter(path);
 		PrintWriter pw = new PrintWriter(fw);
 		pw.print(formula);
 		fw.close();
@@ -115,6 +115,7 @@ public static void cargarFormula() {
 		System.out.println("Archivo de formula no encontrado \n");
 	}catch(Exception ie){
 		System.out.println("El archivo formula se encuentra mal cargado, no se cargaron todos los datos \n");
+		ie.printStackTrace();
 	}
 	Estructura.formula = formula;
 }
@@ -125,7 +126,7 @@ public static void cargarFormula() {
 */
 public static void generarSalida(String directorio) throws IOException{
 	try {
-		FileWriter fileWriter = new FileWriter(new File(directorio + "/salida.csv"));
+		FileWriter fileWriter = new FileWriter(new File(directorio));
 		for (Catedra c : Estructura.catedras){
 			fileWriter.write(c.getNombre() + "," + Estructura.resultado.get(c.getNombre()) + "\n");
 		}

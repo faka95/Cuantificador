@@ -125,9 +125,6 @@ public class Catedra {
         docentes = new ArrayList<>();
     }
 
-    public String getNombre(){
-        return nombre;
-    }
 
     public void agregarDocente(Docente docente){
         docentes.add(docente);

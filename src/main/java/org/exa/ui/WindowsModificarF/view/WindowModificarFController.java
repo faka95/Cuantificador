@@ -1,9 +1,11 @@
 package org.exa.ui.WindowsModificarF.view;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.exa.Estructura;
+import org.exa.FileManager;
 import org.exa.Formula;
 import org.exa.ui.mainwindow.MainWindow;
 
@@ -30,6 +32,11 @@ public class WindowModificarFController implements Initializable {
 		//if(Formula.verificarFormula(formula.getText())) {
 			Estructura.formula = formula.getText();
 			main.setFormulaText(Estructura.formula);
+			try {
+				FileManager.guardarFormula(Estructura.formula);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			botonCancelar.fire();
 			
 		//}

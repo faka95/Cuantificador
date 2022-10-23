@@ -1,5 +1,6 @@
 package org.exa.ui.mainwindow.view;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -63,7 +64,9 @@ public class mainWindowController implements Initializable{
 			ArrayList<ResultRow> lista = new ArrayList<ResultRow>();
 			Map<String, Integer> r = Estructura.resultado;
 			
-			
+			System.out.println(Estructura.formula);
+			System.out.println(Estructura.resultado);
+			System.out.println(f.aplicarFormula(this.minimo.isSelected()));
 			//HAY QUE BORRAR ESTO CUANDO HAYA ALGO EN EL RESULTADO PARA MOSTRAR
 			/*
 			r = new HashMap<String, Integer>();
@@ -80,7 +83,12 @@ public class mainWindowController implements Initializable{
 			
 			//Generacion de la salida
 			
-			FileManager.generarSalida();
+			try {
+				FileManager.generarSalida(Estructura.resultadoPath);
+			} catch (IOException e) {
+				System.out.println("Error al generar la salida");
+				e.printStackTrace();
+			}
 			//System.out.println(minimo.isSelected());
 		}
 	}

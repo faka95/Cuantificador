@@ -9,7 +9,7 @@ public class FileManagerTest {
 
     @Test
     public void guardarFormulaTest() throws IOException { // test metodo guardarFormula
-        String path = System.getProperty("user.dir")+"\\src\\test\\java\\test.txt"; // path para el archivo de formula
+        String path = System.getProperty("user.dir")+"/src/test/java/test.txt"; // path para el archivo de formula
         Estructura.pathFormula = path;
         FileManager.guardarFormula("1+2*3"); // metodo a testear
         String resultado = new String(Files.readAllBytes(Paths.get(path))); // obtengo resultado
