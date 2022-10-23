@@ -46,9 +46,9 @@ public class FileManagerTest {
     @Test
     public void cargarFormulaTest() throws Exception{
        String path = System.getProperty("user.dir")+"/src/test/java";
-       Estructura.pathFormula = path + "formula.txt";
+       Estructura.pathFormula = path + "/formula.txt";
        FileManager.cargarFormula();
-       String formulaEsperada = "2+2";
+       String formulaEsperada = "2+5";
        String formula = Estructura.formula;
        Assertions.assertEquals(formulaEsperada,formula);
     }
