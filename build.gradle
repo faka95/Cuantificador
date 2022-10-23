@@ -1,5 +1,11 @@
 plugins {
     id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.9'
+}
+
+application{
+	mainClassName = 'org.exa.ui.mainwindow.MainWindow'
 }
 
 group 'org.exa'
@@ -7,6 +13,10 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+}
+javafx{
+	modules = ['javafx.controls','javafx.fxml']
+    version = '19'
 }
 
 dependencies {
