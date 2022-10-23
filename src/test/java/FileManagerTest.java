@@ -60,7 +60,7 @@ public class FileManagerTest {
         FileManager.generarSalida(path); // genera archivo de salida csv con las catedras encontradas
         String fileOutput = "", expectedOutput = "";
         for (Catedra c : Estructura.catedras){ // se carga el resultado esperado dentro del csv
-            expectedOutput += c.getNombre() + "," + 0 + "\n"; // reemplazar 0 por getNroAyudantes(catedra) cuando este dicha funcion disponible
+            expectedOutput += c.getNombre() + "," + Estructura.resultado.get(c.getNombre()) + "\n";
         }
         
         FileReader reader = new FileReader(new File(path + "/salida.csv")); // se lee el archivo csv
