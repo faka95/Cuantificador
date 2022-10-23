@@ -127,7 +127,7 @@ import java.util.List;
 		try {
 			FileWriter fileWriter = new FileWriter(new File(directorio + "/salida.csv"));
 			for (Catedra c : Estructura.catedras){
-				fileWriter.write(c.getNombre() + "," + 0 + "\n"); // reemplazar 0 por getNroAyudantes(catedra) cuando este dicha funcion disponible
+				fileWriter.write(c.getNombre() + "," + Estructura.resultado.get(c.getNombre()) + "\n");
 			}
 			fileWriter.close();
 		} catch (IOException e){
