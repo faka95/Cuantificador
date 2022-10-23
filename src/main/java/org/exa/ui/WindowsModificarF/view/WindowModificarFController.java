@@ -27,12 +27,12 @@ public class WindowModificarFController implements Initializable {
 	 */
 	@FXML
 	public void aplicar() {
-		if(Formula.verificarFormula(formula.getText())) {
+		//if(Formula.verificarFormula(formula.getText())) {
 			Estructura.formula = formula.getText();
 			main.setFormulaText(Estructura.formula);
 			botonCancelar.fire();
 			
-		}
+		//}
 		
 	}
 	/***

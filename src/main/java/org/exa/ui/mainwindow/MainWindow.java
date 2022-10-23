@@ -23,7 +23,6 @@ public class MainWindow extends Application{
 		
 	public static String direccionArchivoDocentes;
 	public static String direccionArchivoCatedras;
-	public static String direccionArchivoFormula=new String("formula.txt");
 	
 	private mainWindowController controller;
 	
@@ -39,9 +38,9 @@ public class MainWindow extends Application{
 		primaryStage.setTitle("Cuantificador");
 		
 		//Carga de la Formula, hay que sacar el ejemplo cuando se unan las ramas del programa
-		
-		FileManager.cargarFormula(MainWindow.direccionArchivoFormula);
 		Estructura.formula="A=b*c";
+
+		FileManager.cargarFormula(Estructura.pathFormula);
 		
 		displayWindow();
 		

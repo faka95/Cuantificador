@@ -53,10 +53,10 @@ public class mainWindowController implements Initializable{
 	@FXML
 	public void AccionBotonAplicarFormula() {
 		if((!MainWindow.direccionArchivoDocentes.equals(new String(""))) && (!MainWindow.direccionArchivoCatedras.equals(new String("")))){
-			FileManager.cargarDocente(MainWindow.direccionArchivoDocentes);
 			FileManager.cargarCatedra(MainWindow.direccionArchivoCatedras);
+			FileManager.cargarDocente(MainWindow.direccionArchivoDocentes);
 			Formula f = new Formula();
-			f.parsearFormula(/*Estructura.formula*/);
+			//f.parsearFormula(/*Estructura.formula*/);
 			//if()
 				//chequear que el URL existe y formula bien escrita
 			f.aplicarFormula(this.minimo.isSelected());
@@ -65,11 +65,11 @@ public class mainWindowController implements Initializable{
 			
 			
 			//HAY QUE BORRAR ESTO CUANDO HAYA ALGO EN EL RESULTADO PARA MOSTRAR
-			/**/
+			/*
 			r = new HashMap<String, Integer>();
 			r.put("matematicas 1",5);
 			r.put("sistemas2",8);
-			/**/
+			*/
 
 			Object[] keys = r.keySet().toArray();
 			for(int i = 0;i<r.size();i++ ) {
