@@ -64,4 +64,10 @@ public class Docente {
 
 }
 
+    @Override
+    public String toString() {
+        return "Docente [nombre=" + nombre + ", horasT=" + horasT + ", horasP=" + horasP + ", horasTP=" + horasTP
+                + ", horasPE=" + horasPE + "]";
+    }
     
+}

@@ -9,4 +9,17 @@ public class Estructura {
     public static Map<String, Integer> resultado = new HashMap<String, Integer>();
     public static String formula; 
     public static String pathFormula;
+
+    /**
+     * Busca en la lista de catedras la catedra con el mismo nombre
+     * @param name Nombre de la catedra a buscar
+     * @return Catedra buscada en caso de ser correcto, null en caso de no encontrarla
+     */
+    public static Catedra getCatedraByName(String name){
+        for(Catedra catedra: catedras){
+            if(catedra.getNombre().equals(name))
+                return catedra;
+        }
+        return null;
+    }
 }

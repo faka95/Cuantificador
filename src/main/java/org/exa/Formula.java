@@ -110,5 +110,4 @@ public class Formula {
                 return -1.0;
             }
     }
-
 }
