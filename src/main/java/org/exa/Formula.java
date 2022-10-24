@@ -47,7 +47,7 @@ public class Formula {
             Argument oVar= new Argument("o", o);
             Argument pVar= new Argument("p", horasP);
             Argument peVar= new Argument("pe", horasPE);
-            Argument tpVar= new Argument("pe", horasTP);
+            Argument tpVar= new Argument("tp", horasTP);
             Argument qpVar= new Argument("qp", qp);
             Argument qpeVar= new Argument("qpe", qpe);
 
