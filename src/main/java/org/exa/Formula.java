@@ -1,6 +1,8 @@
 package org.exa;
 
 import java.lang.Math;
+
+import org.exa.constantes.ConstanteFormula;
 import org.mariuszgromada.math.mxparser.Argument;
 import org.mariuszgromada.math.mxparser.Expression;
 
@@ -20,7 +22,7 @@ public class Formula {
 
         Expression e = new Expression(Estructura.formula);
         // el siguiente metodo retorna verdadero si la expresion es correcta
-        if(!e.checkSyntax()) {
+        if(!e.checkLexSyntax()) {
             return false;
         }
         for (Catedra cat : Estructura.catedras) {
@@ -77,9 +79,9 @@ public class Formula {
         if ((catedraAsociada.getHorasTP() == 0 ) && (catedraAsociada.getHorasP() == 0))
             return resultado;
         if (catedraAsociada.getAnioMateria() < 3)
-            resultado = Math.ceil( (double) catedraAsociada.getCantInscriptos()/Constante.cantAlumnosDocentePrimeros);
+            resultado = Math.ceil( (double) catedraAsociada.getCantInscriptos()/ConstanteFormula.cantAlumnosDocentePrimeros);
         else
-            resultado = Math.ceil( (double) catedraAsociada.getCantInscriptos()/Constante.cantAlumnosDocenteUltimos);
+            resultado = Math.ceil( (double) catedraAsociada.getCantInscriptos()/ConstanteFormula.cantAlumnosDocenteUltimos);
         return resultado;    
     }
 
@@ -98,13 +100,13 @@ public class Formula {
                 return resultado;
             case 1:
                 //"Corresponde al laboratorio con informatica"
-                return Math.ceil(catedraAsociada.getCantInscriptos()/Constante.cantAlumnosPE_lab);
+                return Math.ceil(catedraAsociada.getCantInscriptos()/ConstanteFormula.cantAlumnosPE_lab);
             case 2:
                 //"Corresponde al laboratorio experimental"
-                return Math.ceil(catedraAsociada.getCantInscriptos()/Constante.cantAlumnosPE_lab_exp);
+                return Math.ceil(catedraAsociada.getCantInscriptos()/ConstanteFormula.cantAlumnosPE_lab_exp);
             case 3:
                 //"Corresponde a las calses de practicas docentes"
-                return Math.ceil(catedraAsociada.getCantInscriptos()/Constante.cantAlumnosPE_alumnos_docentes);
+                return Math.ceil(catedraAsociada.getCantInscriptos()/ConstanteFormula.cantAlumnosPE_alumnos_docentes);
             default:
                 //"La catedra no presenta practicas especiales"
                 return -1.0;

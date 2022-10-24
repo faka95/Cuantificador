@@ -1,1 +1,0 @@
-((n/qp) * (p + tp) + (n/qpe)*pe - o)/ (max(3,p+pe))

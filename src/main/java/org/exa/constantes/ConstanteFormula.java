@@ -1,6 +1,6 @@
-package org.exa;
+package org.exa.constantes;
 
-public class Constante {
+public class ConstanteFormula {
     
     public static int cantAlumnosDocentePrimeros = 18;
     public static int cantAlumnosDocenteUltimos = 20;
