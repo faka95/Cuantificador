@@ -14,6 +14,10 @@ public class Formula {
      * @param minimoUno es una variable boolean donde nos informa atraves de la interfaz si se necesita como minimo un interino.
      * @return boolean informando si se pudo aplicar la formula.
      */
+    public boolean chequearFormula(String formula){
+        return true;
+    }
+
     public boolean aplicarFormula(boolean minimoUno){
         int horasP, horasPE, o, horasTP;
         float n;
