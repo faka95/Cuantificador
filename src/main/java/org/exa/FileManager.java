@@ -31,7 +31,7 @@ public static void cargarCatedra(String directorio){
 			int tipoPE = Integer.parseInt(datos[6]);
 			int cantInscriptos = Integer.parseInt(datos[7]);
 			int cantRindieron = Integer.parseInt(datos[8]);
-			Catedra catedra = new Catedra(nombre, anioMateria,horasT, horasP, horasTP, horasPE, tipoPE,cantInscriptos,cantRindieron);//va a haber un constructor sin lista?? si no hay que enviar una vacia
+			Catedra catedra = new Catedra(nombre);//va a haber un constructor sin lista?? si no hay que enviar una vacia
 			catedras.add(catedra);
 		}
 		entry.close();
@@ -64,7 +64,7 @@ public static void cargarDocente(String directorio){
 			int horasP = Integer.parseInt(datos[3]);
 			int horasTP = Integer.parseInt(datos[4]);
 			int horasPE = Integer.parseInt(datos[5]);
-			Docente docente = new Docente(nombre, horasT, horasP, horasTP, horasPE);
+			Docente docente = new Docente(nombre);
 			Catedra catedra = Estructura.getCatedraByName(nombreCatedra);
 			if(catedra != null){
 				catedra.agregarDocente(docente);

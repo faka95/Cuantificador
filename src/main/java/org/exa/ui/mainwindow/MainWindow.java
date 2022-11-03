@@ -2,9 +2,9 @@ package org.exa.ui.mainwindow;
 
 import org.exa.Estructura;
 import org.exa.FileManager;
-import org.exa.ui.WindowsModificarF.WindowsModificarF;
 import org.exa.ui.mainwindow.view.mainWindowController;
 import org.exa.ui.Window2.Window2;
+import org.exa.ui.WindowsModificarF.WindowsModificarF;
 
 import javafx.scene.image.Image;
 import javafx.application.Application;
@@ -47,7 +47,7 @@ public class MainWindow extends Application{
 	}
 	/***
 	 * Carga el archivo FXML que corresponde a la ventana principal, almacena el controlador en una variable, carga
-	 * la imagen para el icono de la aplicación, y muestra la ventana
+	 * la imagen para el icono de la aplicacion, y muestra la ventana
 	 */
 	private void displayWindow() {
 		FXMLLoader loader = new FXMLLoader();
@@ -66,6 +66,7 @@ public class MainWindow extends Application{
 		primaryStage.show();
 		
 	}
+	
 	/***
 	 * Crea una instancia de la ventana de modificion de las direcciones de los archivos de entrada
 	 * y la muestra
@@ -77,9 +78,7 @@ public class MainWindow extends Application{
 		windowDirecciones.show(primaryStage,primaryStage.getIcons().get(0));
 	}
 	
-	public static void main(String[] args) {
-		launch(args);
-	}
+
 	/***
 	 * Crea una instancia de la ventana de modificion de la formula y la muestra
 	 */

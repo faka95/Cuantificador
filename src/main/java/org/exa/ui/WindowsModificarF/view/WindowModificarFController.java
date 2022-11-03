@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 
 import org.exa.Estructura;
 import org.exa.FileManager;
-import org.exa.Formula;
 import org.exa.ui.mainwindow.MainWindow;
 
 import javafx.fxml.FXML;
