@@ -13,7 +13,7 @@ public class FileManager {
  */
 public static void cargarCatedra(String directorio){
 	List<Catedra> catedras = new ArrayList<>();
-	
+	/*
 	try {
 		FileReader fileReader = new FileReader(directorio);
 		BufferedReader entry= new BufferedReader(fileReader);//creo el lector de archivos
@@ -40,7 +40,7 @@ public static void cargarCatedra(String directorio){
 		System.out.println("Archivo catedras no encontrado \n");
 	}catch(Exception ie){
 		System.out.println("El archivo catedras se encuentra mal cargado, no se cargaron todos los datos \n");
-	}
+	}*/
 	Estructura.catedras = catedras;
 }
 
@@ -50,7 +50,7 @@ public static void cargarCatedra(String directorio){
  * @return 
  */
 public static void cargarDocente(String directorio){
-	try {
+	/*try {
 		FileReader fileReader = new FileReader(directorio);  
 		BufferedReader entry= new BufferedReader(fileReader);//creo el lector de archivos
 		String entrada = new String(); 
@@ -79,7 +79,7 @@ public static void cargarDocente(String directorio){
 		System.out.println("Archivo docentes no encontrado \n");
 	}catch(Exception ie){
 		System.out.println("El archivo docentes se encuentra mal cargado, no se cargaron todos los datos \n");
-	}
+	}*/
 }
 
 public static void guardarFormula(String formula) throws IOException {

@@ -15,8 +15,8 @@ import javafx.stage.Stage;
 
 public class MainWindow extends Application{
 	
-	private Stage primaryStage;
-	private BorderPane mainLayout;
+	public Stage primaryStage;
+	public BorderPane mainLayout;
 	
 	//Variables estaticas donde se almacenan las direcciones de los archivos de entrada y la formula
 	//puede ser que se las pase a la clase Estructura

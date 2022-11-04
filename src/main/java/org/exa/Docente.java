@@ -1,5 +1,7 @@
 package org.exa;
 
+import java.util.HashMap;
+
 public class Docente {
     private String nombre;
     private HashMap<String, Float> variables;
@@ -77,7 +79,7 @@ public class Docente {
     public String toString() {
         // return "Docente [nombre=" + nombre + ", horasT=" + horasT + ", horasP=" + horasP + ", horasTP=" + horasTP
         //         + ", horasPE=" + horasPE + "]";
-        return "Docente [nombre=" + nombre "]";
+        return "Docente [nombre=" + nombre + "]";
     }
     
 }

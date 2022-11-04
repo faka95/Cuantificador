@@ -19,6 +19,7 @@ public class Formula {
     }
 
     public boolean aplicarFormula(boolean minimoUno){
+    	/*
         int horasP, horasPE, o, horasTP;
         float n;
         double qp;
@@ -68,7 +69,7 @@ public class Formula {
                 resultado = 2;
             //evaluacion de la formula. Retorna Double.NaN en caso de error en la evaluacion
             Estructura.resultado.put(cat.getNombre(), resultado);
-        }
+        }*/
         return true;
     }
 
@@ -80,12 +81,12 @@ public class Formula {
 
     public  Double  getQP (Catedra catedraAsociada){ 
         Double resultado= 1.0;
-        if ((catedraAsociada.getHorasTP() == 0 ) && (catedraAsociada.getHorasP() == 0))
+        /* if ((catedraAsociada.getHorasTP() == 0 ) && (catedraAsociada.getHorasP() == 0))
             return resultado;
         if (catedraAsociada.getAnioMateria() < 3)
             resultado = Math.ceil( (double) catedraAsociada.getCantInscriptos()/ConstanteFormula.cantAlumnosDocentePrimeros);
         else
-            resultado = Math.ceil( (double) catedraAsociada.getCantInscriptos()/ConstanteFormula.cantAlumnosDocenteUltimos);
+            resultado = Math.ceil( (double) catedraAsociada.getCantInscriptos()/ConstanteFormula.cantAlumnosDocenteUltimos);*/
         return resultado;    
     }
 
@@ -96,7 +97,7 @@ public class Formula {
      */
     public  Double  getQPE (Catedra catedraAsociada){
         Double resultado= 1.0;
-        if ((catedraAsociada.getHorasTP() == 0 ) && (catedraAsociada.getHorasP() == 0))
+        /*if ((catedraAsociada.getHorasTP() == 0 ) && (catedraAsociada.getHorasP() == 0))
             return resultado;
             
         switch(catedraAsociada.getTipoPE()) {
@@ -114,6 +115,7 @@ public class Formula {
             default:
                 //"La catedra no presenta practicas especiales"
                 return -1.0;
-            }
+            }*/
+        return resultado;
     }
 }
