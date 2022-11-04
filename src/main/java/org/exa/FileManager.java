@@ -3,8 +3,13 @@ package org.exa;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
 
 public class FileManager {
+
+private static String[] readFirstLine(String line){
+	return line.split(",");
+}
 
 /** 
  * Crea una lista de catedras leidas desde un csv y la carga en la clase "Estructura"
@@ -13,32 +18,36 @@ public class FileManager {
  */
 public static void cargarCatedra(String directorio){
 	List<Catedra> catedras = new ArrayList<>();
+	HashMap<String, Float> variables = new HashMap<>();
 	
 	try {
 		FileReader fileReader = new FileReader(directorio);
 		BufferedReader entry= new BufferedReader(fileReader);//creo el lector de archivos
 		String entrada = new String(); 
-			
+		entrada = entry.readLine();
+		String nombreVariables[] = readFirstLine(entrada);
+		
 		while ( (entrada = entry.readLine()) != null) {
 			//Procesamiento de los datos
 			String datos[] = entrada.split(",");
-			String nombre = datos[0];
-			int anioMateria = Integer.parseInt(datos[1]);
-			int horasT = Integer.parseInt(datos[2]);
-			int horasP = Integer.parseInt(datos[3]);
-			int horasTP = Integer.parseInt(datos[4]);
-			int horasPE = Integer.parseInt(datos[5]);
-			int tipoPE = Integer.parseInt(datos[6]);
-			int cantInscriptos = Integer.parseInt(datos[7]);
-			int cantRindieron = Integer.parseInt(datos[8]);
-			Catedra catedra = new Catedra(nombre, anioMateria,horasT, horasP, horasTP, horasPE, tipoPE,cantInscriptos,cantRindieron);//va a haber un constructor sin lista?? si no hay que enviar una vacia
+			String nombre = new String();
+			for(int i = 0; i < nombreVariables.length; i++){
+				if( nombreVariables[i].toUpperCase().equals("NOMBRE") )
+					nombre = datos[i];
+				else
+					variables.put(nombreVariables[i], Float.parseFloat(datos[i]));
+			}
+
+			Catedra catedra = new Catedra(nombre, variables);//va a haber un constructor sin lista?? si no hay que enviar una vacia
 			catedras.add(catedra);
 		}
 		entry.close();
 		
 	}catch (FileNotFoundException e) {
+		Errores.archivoIncorrecto = true;
 		System.out.println("Archivo catedras no encontrado \n");
 	}catch(Exception ie){
+		Errores.catedraFaltante = true;
 		System.out.println("El archivo catedras se encuentra mal cargado, no se cargaron todos los datos \n");
 	}
 	Estructura.catedras = catedras;
@@ -80,6 +89,7 @@ public static void cargarDocente(String directorio){
 		entry.close();
 		
 	}catch (FileNotFoundException e) {
+		Errores.archivoIncorrecto = true;
 		System.out.println("Archivo docentes no encontrado \n");
 	}catch(Exception ie){
 		System.out.println("El archivo docentes se encuentra mal cargado, no se cargaron todos los datos \n");
@@ -117,6 +127,7 @@ public static void cargarFormula() {
 		}
 		entry.close();
 	}catch (FileNotFoundException e) {
+		Errores.archivoIncorrecto = true;
 		System.out.println("Archivo de formula no encontrado \n");
 	}catch(Exception ie){
 		System.out.println("El archivo formula se encuentra mal cargado, no se cargaron todos los datos \n");

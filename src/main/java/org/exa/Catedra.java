@@ -18,6 +18,11 @@ public class Catedra {
         docentes = new ArrayList<>();
     }
 
+    public Catedra(String nombre, HashMap<String, Float> variables){
+        this.nombre = nombre;
+        this.variables = variables;
+    }
+
 
     //---------------------------SETTERS-----------------------------------------------
 
