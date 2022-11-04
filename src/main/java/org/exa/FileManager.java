@@ -31,13 +31,14 @@ public static void cargarCatedra(String directorio){
 			//Procesamiento de los datos
 			String datos[] = entrada.split(",");
 			String nombre = new String();
+			int ni = -1; //posicion de la variable nombre
 			for(int i = 0; i < nombreVariables.length; i++){
 				if( nombreVariables[i].toUpperCase().equals("NOMBRE") )
-					nombre = datos[i];
+					ni = i;
 				else
 					variables.put(nombreVariables[i], Float.parseFloat(datos[i]));
 			}
-
+			nombre = datos[ni];
 			Catedra catedra = new Catedra(nombre, variables);//va a haber un constructor sin lista?? si no hay que enviar una vacia
 			catedras.add(catedra);
 		}

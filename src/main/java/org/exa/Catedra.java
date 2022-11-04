@@ -21,6 +21,7 @@ public class Catedra {
     public Catedra(String nombre, HashMap<String, Float> variables){
         this.nombre = nombre;
         this.variables = variables;
+        docentes = new ArrayList<>();
     }
 
 
@@ -54,12 +55,10 @@ public class Catedra {
         docentes.add(docente);
     }
 
-    @Override
+  @Override
     public String toString() {
-        return  docentes.toString();
+        return "Catedra [nombre=" + nombre + ", variables=" + variables + ", docentes=" + docentes + "]";
     }
-
-    @Override
     public boolean equals(Object obj) {
         Catedra compare = (Catedra) obj;
         return this.toString().equals(compare.toString());
