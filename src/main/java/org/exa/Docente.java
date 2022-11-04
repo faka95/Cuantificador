@@ -1,16 +1,10 @@
 package org.exa;
 
+import java.util.HashMap;
+
 public class Docente {
     private String nombre;
     private HashMap<String, Float> variables;
-    /*
-    private int horasT;
-    private int horasP;
-    private int horasTP;
-    private int horasPE;
-     */
-    
-
 
     //---------------------------CONSTRUCTOR------------------------------------------- 
     
@@ -19,36 +13,15 @@ public class Docente {
         variables = new HashMap<>();
    }
 
-    // public Docente ( String nombre , int horasT , int horasP , int horasTP , int horasPE ) {
-    //      this.nombre = nombre;
-    //      this.horasT = horasT;
-    //      this.horasP = horasP;
-    //      this.horasTP = horasTP;
-    //      this.horasPE = horasPE;
-    // }
-
     //---------------------------SETTERS-----------------------------------------------
     
     public void setNombre (String nombre) {
         this.nombre = nombre;
     }
 
-
-    // public void setHorasT(int horasT) {
-    //     this.horasT = horasT;
-    // }
-
-    // public void setHorasP(int horasP) {
-    //     this.horasP = horasP;
-    // }
-
-    // public void setHorasTP(int horasTP) {
-    //     this.horasTP = horasTP;
-    // }
-
-    // public void setHorasPE(int horasPE) {
-    //     this.horasPE = horasPE;
-    // }
+    public void put(String key, Float value) {
+        variables.put(key,value);
+    }
 
     //-----------------------------GETTERS-----------------------------------------
     
@@ -56,28 +29,15 @@ public class Docente {
         return nombre;
     }
 
-    // public int getHorasT() {
-    //     return horasT;
-    // }
-
-    // public int getHorasP() {
-    //     return horasP;
-    // }
-
-    // public int getHorasTP() {
-    //     return horasTP;
-    // }
-
-    // public int getHorasPE() {
-    //     return horasPE;
-    // }
-    
+    public Float getValue(String key) {
+        return variables.get(key);
+    }
 
     @Override
     public String toString() {
         // return "Docente [nombre=" + nombre + ", horasT=" + horasT + ", horasP=" + horasP + ", horasTP=" + horasTP
         //         + ", horasPE=" + horasPE + "]";
-        return "Docente [nombre=" + nombre "]";
+        return "Docente [nombre=" + nombre + "]";
     }
     
 }
