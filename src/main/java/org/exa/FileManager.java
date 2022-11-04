@@ -53,23 +53,27 @@ public static void cargarDocente(String directorio){
 	try {
 		FileReader fileReader = new FileReader(directorio);  
 		BufferedReader entry= new BufferedReader(fileReader);//creo el lector de archivos
-		String entrada = new String(); 
-			
+		String entrada;
+		String[] nombreValores = entry.readLine().split(",");
 		while ( (entrada = entry.readLine()) != null) {
 			//Procesamiento de los datos
-			String datos[] = entrada.split(",");
+			String[] datos = entrada.split(",");
 			String nombre = datos[0];
 			String nombreCatedra = datos[1];
-			int horasT = Integer.parseInt(datos[2]);
-			int horasP = Integer.parseInt(datos[3]);
-			int horasTP = Integer.parseInt(datos[4]);
-			int horasPE = Integer.parseInt(datos[5]);
-			Docente docente = new Docente(nombre, horasT, horasP, horasTP, horasPE);
+			Docente docente = new Docente(nombre);
+			for(int i = 2; i<nombreValores.length; i++) {
+				try {
+					docente.put(nombreValores[i], Float.parseFloat(datos[i]));
+				} catch (NumberFormatException | NullPointerException e) {
+					Errores.datosErroneos = true;
+				}
+			}
 			Catedra catedra = Estructura.getCatedraByName(nombreCatedra);
 			if(catedra != null){
 				catedra.agregarDocente(docente);
 			}
 			else{
+				Errores.catedraFaltante = true;
 				System.out.println("La catedra del docente " + nombre + " no existe");
 			}
 		}
@@ -82,7 +86,11 @@ public static void cargarDocente(String directorio){
 	}
 }
 
-public static void guardarFormula(String formula) throws IOException {
+/**
+ * Crea o modifica el archivo de fórmula con el valor indicado por el parámetro.
+ * @param formula string que representa la fórmula matemática que se escribe en el archivo.
+ */
+public static void guardarFormula(String formula) {
 	String path = Estructura.pathFormula;
 	try {
 		FileWriter fw = new FileWriter(path);
@@ -91,14 +99,11 @@ public static void guardarFormula(String formula) throws IOException {
 		fw.close();
 	} catch (IOException e) {
 		e.printStackTrace();
-		throw new IOException(e);
 	}
 }
 
 /** 
- * Lee desde un directorio la formula utilizada para calcular ayudantes por catedra y la carga en la clae "Estructura".
- * @param directorio un directorio absoluto que contiene un archivo de texto con la formula en su primer linea.
- * @return string con la formula a utilizar
+ * Lee desde un directorio la formula utilizada para calcular ayudantes por catedra y la carga en la clase "Estructura".
  */
 public static void cargarFormula() {
 	String formula = new String();
@@ -126,7 +131,7 @@ public static void cargarFormula() {
 */
 public static void generarSalida(String directorio) throws IOException{
 	try {
-		FileWriter fileWriter = new FileWriter(new File(directorio));
+		FileWriter fileWriter = new FileWriter(directorio);
 		for (Catedra c : Estructura.catedras){
 			fileWriter.write(c.getNombre() + "," + Estructura.resultado.get(c.getNombre()) + "\n");
 		}
@@ -135,6 +140,5 @@ public static void generarSalida(String directorio) throws IOException{
 		e.printStackTrace();
 		throw new IOException(e);
 	}
-	
 }
 }
