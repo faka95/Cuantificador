@@ -6,14 +6,16 @@ import org.exa.formula.traduccion.Traductor;
 
 public class VariableQPE extends Traductor{
 
+    private Traductor n;
 
+    
     public VariableQPE(Catedra c){
         this.catedra = c;
+        this.n = new VariableN(c);
     }
 
 
-    @Override
-    public Double getValue() {
+    private Double getQPE(){
         Double resultado = 1.0;
 
         double cantInscriptos = catedra.getAtributo("cantInscriptos");
@@ -32,6 +34,19 @@ public class VariableQPE extends Traductor{
             default:
                 return -1.0;
         }
+    }
+
+
+    @Override
+    public Double getValue() {
+        Double qpe = this.getQPE();
+        
+        if(qpe < 1.f){
+            System.out.println("--------------- flag qpe --------------------");
+            Double n = this.n.getValue();
+            qpe = n; 
+        }
+        return qpe;
     }
 }
 

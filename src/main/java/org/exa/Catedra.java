@@ -31,7 +31,16 @@ public class Catedra {
 
 
     public Double getAtributo(String string) {
-        return this.variables.get(string);
+
+        Double res = this.variables.get(string);;
+
+        if(res == null){
+            res = -1.0;
+            System.out.println("Variable dinamica no encontrada!");
+            Errores.variableIncorrecta = true;
+        }
+
+        return res;
     }
 
 

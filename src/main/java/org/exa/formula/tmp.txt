@@ -56,7 +56,7 @@ public boolean aplicarFormula(boolean minimoUno){
             int resultado = (int)Math.round(e.calculate());
 
             // Casos especiales
-         /*    if(resultado == 0 && minimoUno)
+         /* if(resultado == 0 && minimoUno)
                 resultado = 1;
             if(cat.getCantDocentes() == 1 && resultado == 0)
                 resultado = 1;

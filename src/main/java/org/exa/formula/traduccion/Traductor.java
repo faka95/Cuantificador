@@ -7,7 +7,7 @@ import org.mariuszgromada.math.mxparser.Expression;
 
 public abstract class Traductor {
     
-    protected Expression e = new Expression();
+    //protected Expression e = new Expression();
     protected Catedra catedra;
 
     public abstract Double getValue();
