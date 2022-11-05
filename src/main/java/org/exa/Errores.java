@@ -12,7 +12,7 @@ public class Errores{
     public static boolean errorSintactico = false;
 
     public static boolean existenErrores(){
-        return !(archivoIncorrecto && catedraFaltante && docenteFaltante && datosErroneos && resultadoIncorrecto && resultadoIncorrecto && errorSintactico);
+        return (archivoIncorrecto || catedraFaltante || docenteFaltante || datosErroneos || resultadoIncorrecto || resultadoIncorrecto || errorSintactico);
     }
     
     private static String archivoIncorrecto_mensaje = "El archivo es incorrecto";

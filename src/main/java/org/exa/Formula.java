@@ -1,9 +1,5 @@
 package org.exa;
 
-import java.lang.Math;
-
-import org.exa.constantes.ConstanteFormula;
-import org.mariuszgromada.math.mxparser.Argument;
 import org.mariuszgromada.math.mxparser.Expression;
 
 
@@ -15,7 +11,12 @@ public class Formula {
      * @return boolean informando si se pudo aplicar la formula.
      */
     public boolean chequearFormula(String formula){
-        return true;
+        Expression e = new Expression(Estructura.formula);
+        // el siguiente metodo retorna verdadero si la expresion es correcta
+        if(!e.checkLexSyntax()) {
+            return false;
+        }
+        else return true;
     }
 
     public boolean aplicarFormula(boolean minimoUno){

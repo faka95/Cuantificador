@@ -95,11 +95,10 @@ public class Window2Controller implements Initializable {
 		String direccionDocentes= direccionArchDocentes.getText();
 		String direccionCatedras= direccionArchCatedras.getText();
 		String direccionResultado= direccionArchResultado.getText();
-		if(direccionDocentes!=null && direccionDocentes!=""){
+		if(direccionDocentes!=null){
 			MainWindow.direccionArchivoDocentes=direccionDocentes;
-
 		}
-		if(direccionCatedras!=null && direccionCatedras!=""){
+		if(direccionCatedras!=null){
 			MainWindow.direccionArchivoCatedras=direccionCatedras;
 		}
 		if(direccionResultado!=null && direccionResultado!="") {
@@ -112,7 +111,6 @@ public class Window2Controller implements Initializable {
 	 */
 	@FXML
 	private void cancelar() {
-
 		stage.close();
 	}
 	@Override

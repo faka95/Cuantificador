@@ -1,12 +1,14 @@
 package org.exa.ui.mainwindow.view;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
-
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import javafx.stage.Modality;
 import org.exa.Errores;
 import org.exa.Estructura;
 import org.exa.FileManager;
@@ -15,19 +17,12 @@ import org.exa.ui.mainwindow.MainWindow;
 import org.exa.ui.mainwindow.ResultRow;
 import org.exa.ui.mainwindow.Table;
 
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
-import javafx.stage.Modality;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 public class mainWindowController implements Initializable{
 	
@@ -37,8 +32,13 @@ public class mainWindowController implements Initializable{
 	private TextField formula;
 	@FXML
 	private CheckBox minimo;
+
+	@FXML
+	private ImageView imagenFormula;
 	
 	private MainWindow main;
+	@FXML
+	private Label label_error;
 	/***
 	 * Accion del boton para modificar las direcciones de los archivos de entrada.
 	 * Llama a la funcion newWindow de la clase MainWindow
@@ -154,6 +154,8 @@ public class mainWindowController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.formula.setText(Estructura.formula);
+		this.imagenFormula.setImage(new Image(getClass().getResource("warning_icon.png").toString()));
+		this.setFormulaWarning();
 	}
 	/***
 	 * Muestra la el texto pasado por parametro en el TextField de la ventana principal
@@ -168,5 +170,16 @@ public class mainWindowController implements Initializable{
 	 */
 	public void setMain(MainWindow main) {
 		this.main = main;
+	}
+
+	public void setFormulaWarning(){
+		if(!(new Formula().chequearFormula(formula.getText()))) {
+			imagenFormula.setVisible(true);
+			label_error.setVisible(true);
+		}
+		else {
+			imagenFormula.setVisible(false);
+			label_error.setVisible(false);
+		}
 	}
 }

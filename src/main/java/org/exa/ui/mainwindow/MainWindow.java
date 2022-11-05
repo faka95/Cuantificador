@@ -1,25 +1,24 @@
 package org.exa.ui.mainwindow;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-
-import org.exa.Estructura;
-import org.exa.FileManager;
-import org.exa.constantes.ConstanteArchivo;
-import org.exa.ui.WindowsModificarF.WindowsModificarF;
-import org.exa.ui.mainwindow.view.mainWindowController;
-import org.exa.ui.Window2.Window2;
-
-import javafx.scene.image.Image;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import org.exa.Estructura;
+import org.exa.FileManager;
+import org.exa.constantes.ConstanteArchivo;
+import org.exa.ui.Window2.Window2;
+import org.exa.ui.WindowsModificarF.WindowsModificarF;
+import org.exa.ui.mainwindow.view.mainWindowController;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class MainWindow extends Application{
 	
@@ -32,7 +31,7 @@ public class MainWindow extends Application{
 	public static String direccionArchivoDocentes;
 	public static String direccionArchivoCatedras;
 	
-	private mainWindowController controller;
+	public mainWindowController controller;
 	
 	
 	@Override
@@ -78,6 +77,7 @@ public class MainWindow extends Application{
 				saveDirections();
 			}
 		});
+		primaryStage.setResizable(false);
 		primaryStage.show();
 		
 	}
