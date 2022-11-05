@@ -44,6 +44,7 @@ public class Window2Controller implements Initializable {
 			String path=file.getPath();
 			this.direccionArchDocentes.setText(path);
 		}catch(NullPointerException e) {
+			this.direccionArchDocentes.setText("");
 			System.out.println("No se seleccionó archivo");
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -61,6 +62,7 @@ public class Window2Controller implements Initializable {
 			String path=file.getPath();
 			this.direccionArchCatedras.setText(path);
 		}catch(NullPointerException e) {
+			this.direccionArchCatedras.setText("");
 			System.out.println("No se seleccionó archivo");
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -76,6 +78,7 @@ public class Window2Controller implements Initializable {
 			String path=file.getPath();
 			this.direccionArchResultado.setText(path);
 		}catch(NullPointerException e) {
+			this.direccionArchResultado.setText("");
 			System.out.println("No se seleccionó archivo");
 		}catch(Exception e) {
 			e.printStackTrace();

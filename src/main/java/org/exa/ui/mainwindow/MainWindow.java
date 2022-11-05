@@ -1,17 +1,25 @@
 package org.exa.ui.mainwindow;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 import org.exa.Estructura;
 import org.exa.FileManager;
+import org.exa.constantes.ConstanteArchivo;
 import org.exa.ui.WindowsModificarF.WindowsModificarF;
 import org.exa.ui.mainwindow.view.mainWindowController;
 import org.exa.ui.Window2.Window2;
 
 import javafx.scene.image.Image;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class MainWindow extends Application{
 	
@@ -41,7 +49,8 @@ public class MainWindow extends Application{
 		Estructura.formula="A=b*c";
 
 		FileManager.cargarFormula();
-		
+		loadDirections();
+		System.out.println(direccionArchivoCatedras + "---" + direccionArchivoDocentes);
 		displayWindow();
 		
 	}
@@ -63,6 +72,12 @@ public class MainWindow extends Application{
 		Scene scene = new Scene(mainLayout);
 		primaryStage.setScene(scene);
 		primaryStage.getIcons().add(new Image(getClass().getResource("icon.jpg").toString()));
+		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>(){
+			@Override
+			public void handle(WindowEvent event) {
+				saveDirections();
+			}
+		});
 		primaryStage.show();
 		
 	}
@@ -94,6 +109,26 @@ public class MainWindow extends Application{
 	 */
 	public void setFormulaText(String s) {
 		this.controller.setFormulaText(s);
+	}
+	public static void saveDirections() {
+		try {
+			FileOutputStream fout=new FileOutputStream(ConstanteArchivo.RESOURCES_DIR + "/direcciones.txt");    
+			ObjectOutputStream out=new ObjectOutputStream(fout);    
+			out.writeObject(direccionArchivoCatedras);
+			out.writeObject(direccionArchivoDocentes);
+			out.flush();    
+			//closing the stream    
+			out.close();  
+		}catch(Exception e){e.printStackTrace();}
+	}
+	public static void loadDirections() {
+		try {
+			ObjectInputStream in=new ObjectInputStream(new FileInputStream(ConstanteArchivo.RESOURCES_DIR + "/direcciones.txt"));  
+			direccionArchivoCatedras=(String)in.readObject();  
+			direccionArchivoDocentes=(String)in.readObject();  
+			//closing the stream  
+			in.close();  
+		}catch (Exception e){e.printStackTrace();}
 	}
 	
 }
