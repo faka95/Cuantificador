@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.exa.Catedra;
 import org.exa.Docente;
+import org.exa.constantes.ConstanteFormula;
 import org.exa.formula.traduccion.Traductor;
 
 public class VariableO extends Traductor{
@@ -20,6 +21,6 @@ public class VariableO extends Traductor{
         for (Docente docente : list) {
             res += docente.getSumaHoras();
         }
-        return res;
+        return res/ConstanteFormula.factorCorreccion;
     }
 }

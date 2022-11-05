@@ -14,7 +14,7 @@ public class VariableN extends Traductor{
     
     @Override
     public Double getValue() {
-        return (catedra.getAtributo("cantInscriptos") + catedra.getAtributo("cantRindieron")) / 2;
+        return (catedra.getAtributo("cantInscriptos")+catedra.getAtributo("cantRindieron"))/ 2;
     }
     
 }
