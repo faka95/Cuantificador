@@ -17,41 +17,49 @@ private static String[] readFirstLine(String line){
  * @return 
  */
 public static void cargarCatedra(String directorio){
-	List<Catedra> catedras = new ArrayList<>();
-	HashMap<String, Float> variables = new HashMap<>();
-	
-	try {
-		FileReader fileReader = new FileReader(directorio);
-		BufferedReader entry= new BufferedReader(fileReader);//creo el lector de archivos
-		String entrada = new String(); 
-		entrada = entry.readLine();
-		String nombreVariables[] = readFirstLine(entrada);
-		
-		while ( (entrada = entry.readLine()) != null) {
-			//Procesamiento de los datos
-			String datos[] = entrada.split(",");
-			String nombre = new String();
-			int ni = -1; //posicion de la variable nombre
-			for(int i = 0; i < nombreVariables.length; i++){
-				if( nombreVariables[i].toUpperCase().equals("NOMBRE") )
-					ni = i;
-				else
-					variables.put(nombreVariables[i], Float.parseFloat(datos[i]));
-			}
-			nombre = datos[ni];
-			Catedra catedra = new Catedra(nombre, variables);//va a haber un constructor sin lista?? si no hay que enviar una vacia
-			catedras.add(catedra);
-		}
-		entry.close();
-		
-	}catch (FileNotFoundException e) {
-		Errores.archivoIncorrecto = true;
-		System.out.println("Archivo catedras no encontrado \n");
-	}catch(Exception ie){
+	if (!directorio.endsWith(".csv")) {
+		System.out.println("El archivo especificado para Catedras no es un csv.");
 		Errores.catedraFaltante = true;
-		System.out.println("El archivo catedras se encuentra mal cargado, no se cargaron todos los datos \n");
+		Errores.archivoIncorrecto = true;
 	}
-	Estructura.catedras = catedras;
+	else {
+		List<Catedra> catedras = new ArrayList<>();
+		HashMap<String, Float> variables = new HashMap<>();
+		
+		
+		try {
+			FileReader fileReader = new FileReader(directorio);
+			BufferedReader entry= new BufferedReader(fileReader);//creo el lector de archivos
+			String entrada = new String(); 
+			entrada = entry.readLine();
+			String nombreVariables[] = readFirstLine(entrada);
+			
+			while ( (entrada = entry.readLine()) != null) {
+				//Procesamiento de los datos
+				String datos[] = entrada.split(",");
+				String nombre = new String();
+				int ni = -1; //posicion de la variable nombre
+				for(int i = 0; i < nombreVariables.length; i++){
+					if( nombreVariables[i].toUpperCase().equals("NOMBRE") )
+						ni = i;
+					else
+						variables.put(nombreVariables[i], Float.parseFloat(datos[i]));
+				}
+				nombre = datos[ni];
+				Catedra catedra = new Catedra(nombre, variables);//va a haber un constructor sin lista?? si no hay que enviar una vacia
+				catedras.add(catedra);
+			}
+			entry.close();
+			
+		}catch (FileNotFoundException e) {
+			Errores.archivoIncorrecto = true;
+			System.out.println("Archivo catedras no encontrado \n");
+		}catch(Exception ie){
+			Errores.catedraFaltante = true;
+			System.out.println("El archivo catedras se encuentra mal cargado, no se cargaron todos los datos \n");
+		}
+		Estructura.catedras = catedras;
+	}
 }
 
 /** 
@@ -60,40 +68,47 @@ public static void cargarCatedra(String directorio){
  * @return 
  */
 public static void cargarDocente(String directorio){
-	try {
-		FileReader fileReader = new FileReader(directorio);  
-		BufferedReader entry= new BufferedReader(fileReader);//creo el lector de archivos
-		String entrada;
-		String[] nombreValores = entry.readLine().split(",");
-		while ( (entrada = entry.readLine()) != null) {
-			//Procesamiento de los datos
-			String[] datos = entrada.split(",");
-			String nombre = datos[0];
-			String nombreCatedra = datos[1];
-			Docente docente = new Docente(nombre);
-			for(int i = 2; i<nombreValores.length; i++) {
-				try {
-					docente.put(nombreValores[i], Float.parseFloat(datos[i]));
-				} catch (NumberFormatException | NullPointerException e) {
-					Errores.datosErroneos = true;
+	if (!directorio.endsWith(".csv")) {
+		System.out.println("El archivo especificado para Docentes no es un csv.");
+		Errores.docenteFaltante = true;
+		Errores.archivoIncorrecto = true;
+	}
+	else {
+		try {
+			FileReader fileReader = new FileReader(directorio);  
+			BufferedReader entry= new BufferedReader(fileReader);//creo el lector de archivos
+			String entrada;
+			String[] nombreValores = entry.readLine().split(",");
+			while ( (entrada = entry.readLine()) != null) {
+				//Procesamiento de los datos
+				String[] datos = entrada.split(",");
+				String nombre = datos[0];
+				String nombreCatedra = datos[1];
+				Docente docente = new Docente(nombre);
+				for(int i = 2; i<nombreValores.length; i++) {
+					try {
+						docente.put(nombreValores[i], Float.parseFloat(datos[i]));
+					} catch (NumberFormatException | NullPointerException e) {
+						Errores.datosErroneos = true;
+					}
+				}
+				Catedra catedra = Estructura.getCatedraByName(nombreCatedra);
+				if(catedra != null){
+					catedra.agregarDocente(docente);
+				}
+				else{
+					Errores.catedraFaltante = true;
+					System.out.println("La catedra del docente " + nombre + " no existe");
 				}
 			}
-			Catedra catedra = Estructura.getCatedraByName(nombreCatedra);
-			if(catedra != null){
-				catedra.agregarDocente(docente);
-			}
-			else{
-				Errores.catedraFaltante = true;
-				System.out.println("La catedra del docente " + nombre + " no existe");
-			}
+			entry.close();
+			
+		}catch (FileNotFoundException e) {
+			Errores.archivoIncorrecto = true;
+			System.out.println("Archivo docentes no encontrado \n");
+		}catch(Exception ie){
+			System.out.println("El archivo docentes se encuentra mal cargado, no se cargaron todos los datos \n");
 		}
-		entry.close();
-		
-	}catch (FileNotFoundException e) {
-		Errores.archivoIncorrecto = true;
-		System.out.println("Archivo docentes no encontrado \n");
-	}catch(Exception ie){
-		System.out.println("El archivo docentes se encuentra mal cargado, no se cargaron todos los datos \n");
 	}
 }
 
