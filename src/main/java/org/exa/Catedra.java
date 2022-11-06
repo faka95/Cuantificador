@@ -68,6 +68,11 @@ public class Catedra {
 
 		return res;
 	}
+
+
+    public int getCantDocentes() {
+        return docentes.size();
+    }
     
 }
 

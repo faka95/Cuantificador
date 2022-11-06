@@ -39,7 +39,7 @@ public class Fabrica {
                 public Double getValue() {
                     return -1.0;
                 }
-            };  // TODO: verificar si se modifica la variable correcta
+            }; 
         }
 
         return tr;

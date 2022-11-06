@@ -67,8 +67,16 @@ public class Formula {
     }
 
 
+    /**
+    * Setea el flag de errorSintactico de acuerdo a la sintaxis de la formula
+    * @param formula es la formula que queremos evaluar
+    * @return boolean informando si la formula está bien escrita
+    */
     public boolean chequearFormula(String formula){
-        return true;
+        Expression e = new Expression(formula);
+        boolean res = e.checkLexSyntax();
+        Errores.errorSintactico = res;
+        return res;
     }
 
 
@@ -88,8 +96,17 @@ public class Formula {
             int resultado = (int)Math.round(e.calculate());
 
             System.out.println(resultado);
-            //Estructura.resultado.put(cat.getNombre(), resultado);
-            //TODO: faltan los casos especiales!!
+
+            // Casos especiales
+            if(resultado == 0 && minimoUno)
+                resultado = 1;
+            if(cat.getCantDocentes() == 1 && resultado == 0)
+                resultado = 1;
+            if(cat.getCantDocentes() == 0 && resultado < 2)
+                resultado = 2;
+
+            Estructura.resultado.put(cat.getNombre(), resultado);
+
         }
 
         return true; //TODO verificar
@@ -169,7 +186,7 @@ public class Formula {
         c1.agregarDocente(d1);
         
         Formula f = new Formula();
-        Estructura.formula = "((n/qp) * (horasP + horasTP) + (n/qpe)*horasPE - o)/ (max(3,horasP+horasPE ) )";
+        Estructura.formula = "((n/qp) * (horasP + horasTP) + (n/qpe)*horasPE - o)/ (max(3,horasP+horasPE ) ) + rtx";
         
         Estructura.catedras = list;
         f.aplicarFormula(false);
