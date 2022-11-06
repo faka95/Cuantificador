@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 import org.exa.Catedra;
 import org.exa.Docente;
+import org.exa.Errores;
 import org.exa.Estructura;
 import org.exa.formula.traduccion.Fabrica;
 import org.exa.formula.traduccion.Traductor;
@@ -88,7 +89,7 @@ public class Formula {
 
             System.out.println(resultado);
             //Estructura.resultado.put(cat.getNombre(), resultado);
-
+            //TODO: faltan los casos especiales!!
         }
 
         return true; //TODO verificar
@@ -130,8 +131,8 @@ public class Formula {
             Argument argument;
 
             if(!varArchivo.contains(s)){
-                Traductor tr = Fabrica.getVariableObj(s, catedra);
-                tr = Fabrica.verificarInstancia(tr, s);
+                Traductor tr = Fabrica.getVariableTraductor(s, catedra);
+                tr = Fabrica.verificarInstancia(tr);
                 argument = new Argument(s, tr.getValue());
 
             }else{
@@ -150,20 +151,17 @@ public class Formula {
 
         // 2022,3,2,1,0,3,60,40
         c1.agregarAtributo("anioMateria", 1.0);
-        c1.agregarAtributo("horasT", 3.0);
         c1.agregarAtributo("horasP", 2.0);
         c1.agregarAtributo("horasTP", 1.0);
         c1.agregarAtributo("horasPE", 0.0);
         c1.agregarAtributo("tipoPE", 3.0);
         c1.agregarAtributo("cantInscriptos", 60.0);
         c1.agregarAtributo("cantRindieron", 40.0);
-        c1.agregarAtributo("w", 100.0);
 
         List<Catedra> list = new ArrayList<>();
         list.add(c1);
 
         Docente d1 = new Docente("Juan");
-        d1.agregarAtributo("horasT",2.0);
         d1.agregarAtributo("horasP",1.0);
         d1.agregarAtributo("horasTP",3.0);
         d1.agregarAtributo("horasPE",0.0);
@@ -171,10 +169,11 @@ public class Formula {
         c1.agregarDocente(d1);
         
         Formula f = new Formula();
-        Estructura.formula = "((n/qp) * (horasP + horasTP) + (n/qpe)*horasPE - o)/ (max(3,horasP+horasPE ) ) + w rxs";
+        Estructura.formula = "((n/qp) * (horasP + horasTP) + (n/qpe)*horasPE - o)/ (max(3,horasP+horasPE ) )";
         
         Estructura.catedras = list;
         f.aplicarFormula(false);
+
     }
 
 }

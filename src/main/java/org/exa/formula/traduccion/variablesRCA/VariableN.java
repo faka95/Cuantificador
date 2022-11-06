@@ -2,6 +2,7 @@ package org.exa.formula.traduccion.variablesRCA;
 
 
 import org.exa.Catedra;
+import org.exa.constantes.ConstVariable;
 import org.exa.formula.traduccion.Traductor;
 
 public class VariableN extends Traductor{
@@ -14,7 +15,7 @@ public class VariableN extends Traductor{
     
     @Override
     public Double getValue() {
-        return (catedra.getAtributo("cantInscriptos")+catedra.getAtributo("cantRindieron"))/ 2;
+        return (catedra.getAtributo(ConstVariable.CANT_INSCRIPTOS) + catedra.getAtributo(ConstVariable.CANT_RINDIERON))/ 2;
     }
     
 }

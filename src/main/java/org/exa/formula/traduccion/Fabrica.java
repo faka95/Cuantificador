@@ -3,19 +3,19 @@ package org.exa.formula.traduccion;
 import org.exa.Catedra;
 import org.exa.Errores;
 import org.exa.formula.traduccion.variablesRCA.*;
-import org.exa.constantes.ConstanteVariable;
+import org.exa.constantes.ConstVariable;
 
 public class Fabrica {
 
-    public static Traductor getVariableObj(String nombre, Catedra cat){
+    public static Traductor getVariableTraductor(String nombre, Catedra cat){
 
-        if(nombre.equals(ConstanteVariable.N)){
+        if(nombre.equals(ConstVariable.N)){
             return new VariableN(cat);
-        } else if (nombre.equals(ConstanteVariable.O)){
+        } else if (nombre.equals(ConstVariable.O)){
             return new VariableO(cat);
-        } else if (nombre.equals(ConstanteVariable.QP)){
+        } else if (nombre.equals(ConstVariable.QP)){
             return new VariableQP(cat);
-        }else if (nombre.equals(ConstanteVariable.QPE)){
+        }else if (nombre.equals(ConstVariable.QPE)){
             return new VariableQPE(cat);
         }
 
@@ -23,10 +23,17 @@ public class Fabrica {
     }
 
     
-    public static Traductor verificarInstancia(Traductor tr, String var) {
+    /**
+     * Verifica que la el traductor dado por parametro no sea nulo
+     * @param tr traductor el cual puede ser o no nulo
+     * @return en caso de que no sea nulo, retorna una referencia hacia el mismo traductor. 
+     *         Caso contrario, retorna una clase anonima, donde en el metodo getValue se define un valor discernible
+     */
+    public static Traductor verificarInstancia(Traductor tr) {
         if(tr == null){
-            Errores.variableIncorrecta = false; 
-            System.out.println("La variable "+ var + " NO fue declarada");
+            Errores.variableIncorrecta = true; 
+            System.out.println("Variable NO declarada");
+
             return new Traductor() {
                 @Override
                 public Double getValue() {
