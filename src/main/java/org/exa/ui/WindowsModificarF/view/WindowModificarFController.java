@@ -1,18 +1,17 @@
 package org.exa.ui.WindowsModificarF.view;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
-import org.exa.Estructura;
-import org.exa.FileManager;
-import org.exa.ui.mainwindow.MainWindow;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.exa.Estructura;
+import org.exa.FileManager;
+import org.exa.ui.mainwindow.MainWindow;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class WindowModificarFController implements Initializable {
 	
@@ -46,6 +45,7 @@ public class WindowModificarFController implements Initializable {
 	 */
 	@FXML
 	public void cancelar() {
+		main.controller.setFormulaWarning();
 		stage.close();
 	}
 	@Override

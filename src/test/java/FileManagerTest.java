@@ -16,7 +16,7 @@ public class FileManagerTest {
         Assertions.assertEquals("1+2*3",resultado); // assert esperado-resultado
     }
 
-    @Test
+   /* @Test
     public void cargarCatedraDocente() throws Exception{
         String path = System.getProperty("user.dir")+"/src/test/java";
         
@@ -41,9 +41,9 @@ public class FileManagerTest {
         catedrasEsperadas.add(cat5);
 */
         Assertions.assertEquals(catedrasEsperadas,catedras); 
-    }
+    }*/
  
-    @Test
+   /* @Test
     public void cargarFormulaTest() throws Exception{
        String path = System.getProperty("user.dir")+"/src/test/java";
        Estructura.pathFormula = path + "/formula.txt";
@@ -70,5 +70,5 @@ public class FileManagerTest {
             read = reader.read();
         }
         Assertions.assertEquals(fileOutput,expectedOutput); // se verifica que el contenido en el archivo y el esperado sean identicos
-	}
+	}*/
 }

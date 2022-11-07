@@ -3,14 +3,16 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.exa.ui.mainwindow.view.mainWindowController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.exa.ui.mainwindow.view.mainWindowController">
    <center>
       <VBox spacing="10.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -36,9 +38,18 @@
       </VBox>
    </center>
    <top>
-      <VBox alignment="CENTER" prefHeight="76.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="76.0" prefWidth="538.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="formula" blendMode="DARKEN" editable="false" focusTraversable="false" maxWidth="300.0" minWidth="300.0" mouseTransparent="true" prefHeight="25.0" prefWidth="306.0" text="funcion" />
+            <HBox alignment="CENTER_RIGHT" fillHeight="false" prefHeight="25.0" prefWidth="517.0" spacing="6.0">
+               <children>
+                  <TextField fx:id="formula" blendMode="DARKEN" editable="false" focusTraversable="false" maxWidth="300.0" minWidth="300.0" mouseTransparent="true" prefHeight="25.0" prefWidth="306.0" text="funcion" />
+                  <ImageView fx:id="imagenFormula" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="label_error" prefHeight="24.0" prefWidth="99.0" text="Error en la formula" />
+               </children>
+               <padding>
+                  <Insets right="20.0" />
+               </padding>
+            </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#accion1" prefWidth="300.0" text="Cargar Archivos" />

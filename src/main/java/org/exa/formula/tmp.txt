@@ -64,7 +64,7 @@ public boolean aplicarFormula(boolean minimoUno){
                 resultado = 2; */
             //evaluacion de la formula. Retorna Double.NaN en caso de error en la evaluacion
             Estructura.resultado.put(cat.getNombre(), resultado);
-        }
+        }*/
         return true;
     }
 
