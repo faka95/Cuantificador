@@ -1,19 +1,19 @@
-Nombre,Catedra,T,P,PE,TP
-Cobo Hernan,Introducción a la Programación I,0,0,0,60
-Leonardi Carmen,Introducción a la Programación I,0,0,0,60
-Romero Maria,Introducción a la Programación I,0,0,0,45
-Martinez Yolanda,Introducción a la Programación I,0,0,0,45
-Gomez Leandro,Introducción a la Programación I,0,0,0,45
-Lima Santiago,Introducción a la Programación I,0,0,0,45
-Amendola Federico,Análisis y Diseño de Algoritmos I,0,0,45,0
-Martinez Liliana,Análisis y Diseño de Algoritmos I,0,0,0,60
-Favre Liliana,Análisis y Diseño de Algoritmos I,0,0,0,45
-Pereira Claudia,Análisis y Diseño de Algoritmos I,0,0,0,60
-Curti Hugo,Introducción a la Arquitectura de Sistemas,0,0,0,30
-Collado Cecilia,Introducción a la Arquitectura de Sistemas,0,45,0,0
-Larsen Karina,Introducción a la Arquitectura de Sistemas,0,45,0,0
-Todorovich Elias,Introducción a la Arquitectura de Sistemas,0,0,0,30
-Marcos Clauda,Metodologías de Desarrollo de Software I,0,0,0,45
-Rodriguez Guillermo,Metodologías de Desarrollo de Software I,0,45,30,0
-Diaz Pace Andres,Metodologías de Desarrollo de Software I,0,45,30,0
-Vidal Santiago,Metodologías de Desarrollo de Software I,0,0,0,45
+Nombre,Catedra,horasT,horasP,horasPE,horasTP
+Cobo Hernan,Introduccion_a_la_Programacion_I,0,0,0,60
+Leonardi Carmen,Introduccion_a_la_Programacion_I,0,0,0,60
+Romero Maria,Introduccion_a_la_Programacion_I,0,0,0,45
+Martinez Yolanda,Introduccion_a_la_Programacion_I,0,0,0,45
+Gomez Leandro,Introduccion_a_la_Programacion_I,0,0,0,45
+Lima Santiago,Introduccion_a_la_Programacion_I,0,0,0,45
+Amendola Federico,Analisis_y_Diseño_de_Algoritmos_I,0,0,45,0
+Martinez Liliana,Analisis_y_Diseño_de_Algoritmos_I,0,0,0,60
+Favre Liliana,Analisis_y_Diseño_de_Algoritmos_I,0,0,0,45
+Pereira Claudia,Analisis_y_Diseño_de_Algoritmos_I,0,0,0,60
+Curti Hugo,Introduccion_a_la_Arquitectura_de_Sistemas,0,0,0,30
+Collado Cecilia,Introduccion_a_la_Arquitectura_de_Sistemas,0,45,0,0
+Larsen Karina,Introduccion_a_la_Arquitectura_de_Sistemas,0,45,0,0
+Todorovich Elias,Introduccion_a_la_Arquitectura_de_Sistemas,0,0,0,30
+Marcos Clauda,Metodologias_de_Desarrollo_de_Software_I,0,0,0,45
+Rodriguez Guillermo,Metodologias_de_Desarrollo_de_Software_I,0,45,30,0
+Diaz Pace Andres,Metodologias_de_Desarrollo_de_Software_I,0,45,30,0
+Vidal Santiago,Metodologias_de_Desarrollo_de_Software_I,0,0,0,45

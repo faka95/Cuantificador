@@ -40,7 +40,7 @@ public static void cargarCatedra(String directorio){
 				String nombre = new String();
 				int ni = -1; //posicion de la variable nombre
 				for(int i = 0; i < nombreVariables.length; i++){
-					if( nombreVariables[i].toUpperCase().equals("NOMBRE") )
+					if( nombreVariables[i].toUpperCase().equals("CATEDRA") )
 						ni = i;
 					else
 						variables.put(nombreVariables[i], Double.parseDouble(datos[i]));
@@ -52,11 +52,12 @@ public static void cargarCatedra(String directorio){
 			entry.close();
 			
 		}catch (FileNotFoundException e) {
-			Errores.archivoIncorrecto = true;
+			Errores.catedraFaltante = true;
 			System.out.println("Archivo catedras no encontrado \n");
 		}catch(Exception ie){
-			Errores.catedraFaltante = true;
+			Errores.archivoIncorrecto = true;
 			System.out.println("El archivo catedras se encuentra mal cargado, no se cargaron todos los datos \n");
+			ie.printStackTrace();
 		}
 		Estructura.catedras = catedras;
 	}
@@ -104,9 +105,10 @@ public static void cargarDocente(String directorio){
 			entry.close();
 			
 		}catch (FileNotFoundException e) {
-			Errores.archivoIncorrecto = true;
+			Errores.catedraFaltante = true;
 			System.out.println("Archivo docentes no encontrado \n");
 		}catch(Exception ie){
+			Errores.archivoIncorrecto = true;
 			System.out.println("El archivo docentes se encuentra mal cargado, no se cargaron todos los datos \n");
 		}
 	}

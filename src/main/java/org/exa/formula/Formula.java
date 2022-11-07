@@ -86,6 +86,7 @@ public class Formula {
      * @return boolean informando si se pudo aplicar la formula.
      */
     public boolean aplicarFormula(boolean minimoUno){
+    	System.out.println(Estructura.formula);
         Expression e;
 
         for (Catedra cat : Estructura.catedras) {  

@@ -1,1 +1,1 @@
-((n/qp) * (p + tp) + (n/qpe)*pe - o)/ (max(3,p+pe ))
+((n/qp) * (horasP + horasTP) + (n/qpe)*horasPE - o)/ (max(3,horasP+horasPE ))
