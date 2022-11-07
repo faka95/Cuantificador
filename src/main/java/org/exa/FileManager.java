@@ -3,8 +3,13 @@ package org.exa;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
 
 public class FileManager {
+
+private static String[] readFirstLine(String line){
+	return line.split(",");
+}
 
 /** 
  * Crea una lista de catedras leidas desde un csv y la carga en la clase "Estructura"
@@ -12,36 +17,49 @@ public class FileManager {
  * @return 
  */
 public static void cargarCatedra(String directorio){
-	List<Catedra> catedras = new ArrayList<>();
-	/*
-	try {
-		FileReader fileReader = new FileReader(directorio);
-		BufferedReader entry= new BufferedReader(fileReader);//creo el lector de archivos
-		String entrada = new String(); 
-			
-		while ( (entrada = entry.readLine()) != null) {
-			//Procesamiento de los datos
-			String datos[] = entrada.split(",");
-			String nombre = datos[0];
-			int anioMateria = Integer.parseInt(datos[1]);
-			int horasT = Integer.parseInt(datos[2]);
-			int horasP = Integer.parseInt(datos[3]);
-			int horasTP = Integer.parseInt(datos[4]);
-			int horasPE = Integer.parseInt(datos[5]);
-			int tipoPE = Integer.parseInt(datos[6]);
-			int cantInscriptos = Integer.parseInt(datos[7]);
-			int cantRindieron = Integer.parseInt(datos[8]);
-			Catedra catedra = new Catedra(nombre);//va a haber un constructor sin lista?? si no hay que enviar una vacia
-			catedras.add(catedra);
-		}
-		entry.close();
+	if (!directorio.endsWith(".csv")) {
+		System.out.println("El archivo especificado para Catedras no es un csv.");
+		Errores.catedraFaltante = true;
+		Errores.archivoIncorrecto = true;
+	}
+	else {
+		List<Catedra> catedras = new ArrayList<>();
+		HashMap<String, Double> variables = new HashMap<>();
 		
-	}catch (FileNotFoundException e) {
-		System.out.println("Archivo catedras no encontrado \n");
-	}catch(Exception ie){
-		System.out.println("El archivo catedras se encuentra mal cargado, no se cargaron todos los datos \n");
-	}*/
-	Estructura.catedras = catedras;
+		
+		try {
+			FileReader fileReader = new FileReader(directorio);
+			BufferedReader entry= new BufferedReader(fileReader);//creo el lector de archivos
+			String entrada = new String(); 
+			entrada = entry.readLine();
+			String nombreVariables[] = readFirstLine(entrada);
+			
+			while ( (entrada = entry.readLine()) != null) {
+				//Procesamiento de los datos
+				String datos[] = entrada.split(",");
+				String nombre = new String();
+				int ni = -1; //posicion de la variable nombre
+				for(int i = 0; i < nombreVariables.length; i++){
+					if( nombreVariables[i].toUpperCase().equals("NOMBRE") )
+						ni = i;
+					else
+						variables.put(nombreVariables[i], Double.parseDouble(datos[i]));
+				}
+				nombre = datos[ni];
+				Catedra catedra = new Catedra(nombre, variables);//va a haber un constructor sin lista?? si no hay que enviar una vacia
+				catedras.add(catedra);
+			}
+			entry.close();
+			
+		}catch (FileNotFoundException e) {
+			Errores.archivoIncorrecto = true;
+			System.out.println("Archivo catedras no encontrado \n");
+		}catch(Exception ie){
+			Errores.catedraFaltante = true;
+			System.out.println("El archivo catedras se encuentra mal cargado, no se cargaron todos los datos \n");
+		}
+		Estructura.catedras = catedras;
+	}
 }
 
 /** 
@@ -50,39 +68,55 @@ public static void cargarCatedra(String directorio){
  * @return 
  */
 public static void cargarDocente(String directorio){
-	/*try {
-		FileReader fileReader = new FileReader(directorio);  
-		BufferedReader entry= new BufferedReader(fileReader);//creo el lector de archivos
-		String entrada = new String(); 
+	if (!directorio.endsWith(".csv")) {
+		System.out.println("El archivo especificado para Docentes no es un csv.");
+		Errores.docenteFaltante = true;
+		Errores.archivoIncorrecto = true;
+	}
+	else {
+		try {
+			FileReader fileReader = new FileReader(directorio);  
+			BufferedReader entry= new BufferedReader(fileReader);//creo el lector de archivos
+			String entrada;
+			String[] nombreValores = entry.readLine().split(",");
+			while ( (entrada = entry.readLine()) != null) {
+				//Procesamiento de los datos
+				String[] datos = entrada.split(",");
+				String nombre = datos[0];
+				String nombreCatedra = datos[1];
+				Docente docente = new Docente(nombre);
+				for(int i = 2; i<nombreValores.length; i++) {
+					try {
+						docente.put(nombreValores[i], Double.parseDouble(datos[i]));
+					} catch (NumberFormatException | NullPointerException e) {
+						Errores.datosErroneos = true;
+					}
+				}
+				Catedra catedra = Estructura.getCatedraByName(nombreCatedra);
+				if(catedra != null){
+					catedra.agregarDocente(docente);
+				}
+				else{
+					Errores.catedraFaltante = true;
+					System.out.println("La catedra del docente " + nombre + " no existe");
+				}
+			}
+			entry.close();
 			
-		while ( (entrada = entry.readLine()) != null) {
-			//Procesamiento de los datos
-			String datos[] = entrada.split(",");
-			String nombre = datos[0];
-			String nombreCatedra = datos[1];
-			int horasT = Integer.parseInt(datos[2]);
-			int horasP = Integer.parseInt(datos[3]);
-			int horasTP = Integer.parseInt(datos[4]);
-			int horasPE = Integer.parseInt(datos[5]);
-			Docente docente = new Docente(nombre);
-			Catedra catedra = Estructura.getCatedraByName(nombreCatedra);
-			if(catedra != null){
-				catedra.agregarDocente(docente);
-			}
-			else{
-				System.out.println("La catedra del docente " + nombre + " no existe");
-			}
+		}catch (FileNotFoundException e) {
+			Errores.archivoIncorrecto = true;
+			System.out.println("Archivo docentes no encontrado \n");
+		}catch(Exception ie){
+			System.out.println("El archivo docentes se encuentra mal cargado, no se cargaron todos los datos \n");
 		}
-		entry.close();
-		
-	}catch (FileNotFoundException e) {
-		System.out.println("Archivo docentes no encontrado \n");
-	}catch(Exception ie){
-		System.out.println("El archivo docentes se encuentra mal cargado, no se cargaron todos los datos \n");
-	}*/
+	}
 }
 
-public static void guardarFormula(String formula) throws IOException {
+/**
+ * Crea o modifica el archivo de fórmula con el valor indicado por el parámetro.
+ * @param formula string que representa la fórmula matemática que se escribe en el archivo.
+ */
+public static void guardarFormula(String formula) {
 	String path = Estructura.pathFormula;
 	try {
 		FileWriter fw = new FileWriter(path);
@@ -91,14 +125,11 @@ public static void guardarFormula(String formula) throws IOException {
 		fw.close();
 	} catch (IOException e) {
 		e.printStackTrace();
-		throw new IOException(e);
 	}
 }
 
 /** 
- * Lee desde un directorio la formula utilizada para calcular ayudantes por catedra y la carga en la clae "Estructura".
- * @param directorio un directorio absoluto que contiene un archivo de texto con la formula en su primer linea.
- * @return string con la formula a utilizar
+ * Lee desde un directorio la formula utilizada para calcular ayudantes por catedra y la carga en la clase "Estructura".
  */
 public static void cargarFormula() {
 	String formula = new String();
@@ -112,6 +143,7 @@ public static void cargarFormula() {
 		}
 		entry.close();
 	}catch (FileNotFoundException e) {
+		Errores.archivoIncorrecto = true;
 		System.out.println("Archivo de formula no encontrado \n");
 	}catch(Exception ie){
 		System.out.println("El archivo formula se encuentra mal cargado, no se cargaron todos los datos \n");
@@ -126,7 +158,7 @@ public static void cargarFormula() {
 */
 public static void generarSalida(String directorio) throws IOException{
 	try {
-		FileWriter fileWriter = new FileWriter(new File(directorio));
+		FileWriter fileWriter = new FileWriter(directorio);
 		for (Catedra c : Estructura.catedras){
 			fileWriter.write(c.getNombre() + "," + Estructura.resultado.get(c.getNombre()) + "\n");
 		}
@@ -135,6 +167,5 @@ public static void generarSalida(String directorio) throws IOException{
 		e.printStackTrace();
 		throw new IOException(e);
 	}
-	
 }
 }

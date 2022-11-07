@@ -17,9 +17,16 @@ public class Docente {
         this.nombre = nombre;
     }
 
+    public void put(String key, Double value) {
+        variables.put(key,value);
+    }
+
+    //-----------------------------GETTERS-----------------------------------------
+    
     public String getNombre() {
         return nombre;
     }
+
 
     public Double getAtributo(String string) {
         return this.variables.get(string);
@@ -38,5 +45,20 @@ public class Docente {
 
     public void agregarAtributo(String nombre, Double i) {
         this.variables.put(nombre, i);
+    
     }
+    
+    
+    public Double getValue(String key) {
+        return variables.get(key);
+    }
+
+
+    @Override
+    public String toString() {
+        // return "Docente [nombre=" + nombre + ", horasT=" + horasT + ", horasP=" + horasP + ", horasTP=" + horasTP
+        //         + ", horasPE=" + horasPE + "]";
+        return "Docente [nombre=" + nombre + "]";
+    }
+
 }
