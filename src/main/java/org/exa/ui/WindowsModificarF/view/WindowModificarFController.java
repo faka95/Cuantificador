@@ -30,11 +30,7 @@ public class WindowModificarFController implements Initializable {
 		//if(Formula.verificarFormula(formula.getText())) {
 			Estructura.formula = formula.getText();
 			main.setFormulaText(Estructura.formula);
-			try {
-				FileManager.guardarFormula(Estructura.formula);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			FileManager.guardarFormula(Estructura.formula);
 			botonCancelar.fire();
 			
 		//}

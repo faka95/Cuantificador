@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Errores{
     public static boolean archivoIncorrecto = false;
-    public static boolean catedraFaltante = true;
-    public static boolean docenteFaltante = true;
+    public static boolean catedraFaltante = false;
+    public static boolean docenteFaltante = false;
     public static boolean datosErroneos = false;
     public static boolean resultadoIncorrecto = false;
     public static boolean variableIncorrecta = false;
@@ -25,7 +25,7 @@ public class Errores{
 
     public static ArrayList<String> getErrores(){
         ArrayList<String> errores= new ArrayList<String>();
-        if(archivoIncorrecto) errores.add(archivoIncorrecto_mensaje);
+        if(archivoIncorrecto && !catedraFaltante && !docenteFaltante) errores.add(archivoIncorrecto_mensaje);
         if(catedraFaltante) errores.add(catedraFaltante_mensaje);
         if(docenteFaltante) errores.add(docenteFaltante_mensaje);
         if(datosErroneos) errores.add(datosErroneos_mensaje);
@@ -33,6 +33,22 @@ public class Errores{
         if(variableIncorrecta) errores.add(variableIncorrecta_mensaje);
         if(errorSintactico) errores.add(errorSintactico_mensaje);
         return errores;
+    }
+
+
+    public static boolean esPosibleAplicar() {
+        return !(catedraFaltante || docenteFaltante || archivoIncorrecto || datosErroneos);
+    }
+
+    
+    public static void setVariables(){
+        archivoIncorrecto = false;
+        catedraFaltante = false;
+        docenteFaltante = false;
+        datosErroneos = false;
+        resultadoIncorrecto = false;
+        variableIncorrecta = false;
+        errorSintactico = false;
     }
 
 }

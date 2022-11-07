@@ -12,6 +12,7 @@ import javafx.stage.Modality;
 import org.exa.Errores;
 import org.exa.Estructura;
 import org.exa.FileManager;
+import org.exa.formula.Formula;
 import org.exa.ui.mainwindow.MainWindow;
 import org.exa.ui.mainwindow.ResultRow;
 import org.exa.ui.mainwindow.Table;
@@ -62,7 +63,14 @@ public class mainWindowController implements Initializable{
 			FileManager.cargarCatedra(MainWindow.direccionArchivoCatedras);
 			FileManager.cargarDocente(MainWindow.direccionArchivoDocentes);
 			Formula f = new Formula();
-			f.aplicarFormula(this.minimo.isSelected());
+
+			Formula.chequearFormula(Estructura.formula);
+
+			if(Errores.esPosibleAplicar()){
+				f.aplicarFormula(this.minimo.isSelected());
+			}
+			
+
 			if(!Errores.existenErrores()) {
 				ArrayList<ResultRow> lista = new ArrayList<ResultRow>();
 				Map<String, Integer> r = Estructura.resultado;
@@ -71,11 +79,12 @@ public class mainWindowController implements Initializable{
 				System.out.println(f.aplicarFormula(this.minimo.isSelected()));
 				//HAY QUE BORRAR ESTO CUANDO HAYA ALGO EN EL RESULTADO PARA MOSTRAR
 
+				/*
 				r = new HashMap<String, Integer>();
 				Estructura.resultado = r;
 				r.put("matematicas 1", 5);
 				r.put("sistemas2", 8);
-
+				*/
 
 				Object[] keys = r.keySet().toArray();
 				for (int i = 0; i < r.size(); i++) {
@@ -97,6 +106,9 @@ public class mainWindowController implements Initializable{
 			{
 				ventanaDeErrores(Errores.getErrores());
 			}
+
+			Errores.setVariables();
+
 			//System.out.println(minimo.isSelected());
 
 	}
@@ -172,7 +184,10 @@ public class mainWindowController implements Initializable{
 	}
 
 	public void setFormulaWarning(){
-		if(!(new Formula().chequearFormula(formula.getText()))) {
+
+		Formula.chequearFormula(Estructura.formula);
+
+		if((Errores.errorSintactico)) {
 			imagenFormula.setVisible(true);
 			label_error.setVisible(true);
 		}

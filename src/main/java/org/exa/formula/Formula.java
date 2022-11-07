@@ -72,9 +72,9 @@ public class Formula {
     * @param formula es la formula que queremos evaluar
     * @return boolean informando si la formula está bien escrita
     */
-    public boolean chequearFormula(String formula){
+    public static boolean chequearFormula(String formula){
         Expression e = new Expression(formula);
-        boolean res = e.checkLexSyntax();
+        boolean res = !e.checkLexSyntax();
         Errores.errorSintactico = res;
         return res;
     }
@@ -167,13 +167,13 @@ public class Formula {
         Catedra c1 = new Catedra("prog1");
 
         // 2022,3,2,1,0,3,60,40
-        c1.agregarAtributo("anioMateria", 1.0);
-        c1.agregarAtributo("horasP", 2.0);
-        c1.agregarAtributo("horasTP", 1.0);
-        c1.agregarAtributo("horasPE", 0.0);
-        c1.agregarAtributo("tipoPE", 3.0);
-        c1.agregarAtributo("cantInscriptos", 60.0);
-        c1.agregarAtributo("cantRindieron", 40.0);
+        c1.putValue("anioMateria", 1.0);
+        c1.putValue("horasP", 2.0);
+        c1.putValue("horasTP", 1.0);
+        c1.putValue("horasPE", 0.0);
+        c1.putValue("tipoPE", 3.0);
+        c1.putValue("cantInscriptos", 60.0);
+        c1.putValue("cantRindieron", 40.0);
 
         List<Catedra> list = new ArrayList<>();
         list.add(c1);

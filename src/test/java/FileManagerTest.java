@@ -39,7 +39,7 @@ public class FileManagerTest {
         Catedra cat5 = new Catedra("Lineal",2022, 3, 2, 1, 0,3, 60, 40);
         cat5.agregarDocente(new Docente("Pablo",2,1,0,3));
         catedrasEsperadas.add(cat5);
-*/
+
         Assertions.assertEquals(catedrasEsperadas,catedras); 
     }*/
  

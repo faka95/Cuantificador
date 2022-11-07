@@ -11,13 +11,13 @@ public class Utils {
     
     public static void cargarCatedra(Catedra c1){
 
-        c1.agregarAtributo(ConstVariable.ANIO_MATERIA, 1.0);
-        c1.agregarAtributo(ConstVariable.HORAS_P, 2.0);
-        c1.agregarAtributo(ConstVariable.HORAS_TP, 1.0);
-        c1.agregarAtributo(ConstVariable.HORAS_PE, 0.0);
-        c1.agregarAtributo(ConstVariable.TIPO_PE, 3.0);
-        c1.agregarAtributo(ConstVariable.CANT_INSCRIPTOS, 60.0);
-        c1.agregarAtributo(ConstVariable.CANT_RINDIERON, 40.0);
+        c1.putValue(ConstVariable.ANIO_MATERIA, 1.0);
+        c1.putValue(ConstVariable.HORAS_P, 2.0);
+        c1.putValue(ConstVariable.HORAS_TP, 1.0);
+        c1.putValue(ConstVariable.HORAS_PE, 0.0);
+        c1.putValue(ConstVariable.TIPO_PE, 3.0);
+        c1.putValue(ConstVariable.CANT_INSCRIPTOS, 60.0);
+        c1.putValue(ConstVariable.CANT_RINDIERON, 40.0);
 
         List<Catedra> list = new ArrayList<>();
         list.add(c1);
