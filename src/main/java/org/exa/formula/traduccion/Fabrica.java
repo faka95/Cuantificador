@@ -16,7 +16,7 @@ public class Fabrica {
         } else if (nombre.equals(ConstVariable.QP)){
             return new VariableQP(cat);
         }else if (nombre.equals(ConstVariable.QPE)){
-            return new VariableQPE(cat);
+            return new VariableQPE();
         }
 
         return null;

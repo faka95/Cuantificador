@@ -2,11 +2,10 @@ package org.exa.constantes;
 
 public class ConstanteFormula {
     
-    public static int cantAlumnosDocentePrimeros = 18;
-    public static int cantAlumnosDocenteUltimos = 20;
-    public static int cantAlumnosPE_lab = 10;
-    public static int cantAlumnosPE_lab_exp = 6;
-    public static int cantAlumnosPE_alumnos_docentes = 2;
-    public static int factorCorreccion = 15;
+    public static final Double QPE = 20.0;
+    public static final Double QP_PRIMER_ANIO = 25.0;
+    public static final Double QP_ULTIMOS_ANIOS = 25.0;
+
+    public static int FACTOR_CORRECION = 15;
    
 }

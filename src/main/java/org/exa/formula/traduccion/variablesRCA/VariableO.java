@@ -21,6 +21,6 @@ public class VariableO extends Traductor{
         for (Docente docente : list) {
             res += docente.getSumaHoras();
         }
-        return res/ConstanteFormula.factorCorreccion;
+        return res/ConstanteFormula.FACTOR_CORRECION;
     }
 }

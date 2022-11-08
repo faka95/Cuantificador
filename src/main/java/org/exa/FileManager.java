@@ -48,6 +48,7 @@ public static void cargarCatedra(String directorio){
 				nombre = datos[ni];
 				Catedra catedra = new Catedra(nombre, variables);//va a haber un constructor sin lista?? si no hay que enviar una vacia
 				catedras.add(catedra);
+				variables = new HashMap<>();
 			}
 			entry.close();
 			

@@ -8,7 +8,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.exa.Catedra;
-import org.exa.Docente;
 import org.exa.Errores;
 import org.exa.Estructura;
 import org.exa.formula.traduccion.Fabrica;
@@ -86,7 +85,6 @@ public class Formula {
      * @return boolean informando si se pudo aplicar la formula.
      */
     public boolean aplicarFormula(boolean minimoUno){
-    	System.out.println(Estructura.formula);
         Expression e;
 
         for (Catedra cat : Estructura.catedras) {  
@@ -94,9 +92,8 @@ public class Formula {
 
             e = new Expression(Estructura.formula);
             this.cargarArgumentos(e, argumentos);
-            int resultado = (int)Math.round(e.calculate());
 
-            System.out.println(resultado);
+            int resultado = (int)Math.round(e.calculate());
 
             // Casos especiales
             if(resultado == 0 && minimoUno)
@@ -154,44 +151,13 @@ public class Formula {
                 argument = new Argument(s, tr.getValue());
 
             }else{
-                argument = new Argument(s, catedra.getAtributo(s));
+                Double a = catedra.getAtributo(s);
+                argument = new Argument(s, a);
             }
             retorno.add(argument);
         }
 
         return retorno;
-    }
-
-
-    public static void main(String[] args) {
-        
-        Catedra c1 = new Catedra("prog1");
-
-        // 2022,3,2,1,0,3,60,40
-        c1.putValue("anioMateria", 1.0);
-        c1.putValue("horasP", 2.0);
-        c1.putValue("horasTP", 1.0);
-        c1.putValue("horasPE", 0.0);
-        c1.putValue("tipoPE", 3.0);
-        c1.putValue("cantInscriptos", 60.0);
-        c1.putValue("cantRindieron", 40.0);
-
-        List<Catedra> list = new ArrayList<>();
-        list.add(c1);
-
-        Docente d1 = new Docente("Juan");
-        d1.agregarAtributo("horasP",1.0);
-        d1.agregarAtributo("horasTP",3.0);
-        d1.agregarAtributo("horasPE",0.0);
-
-        c1.agregarDocente(d1);
-        
-        Formula f = new Formula();
-        Estructura.formula = "((n/qp) * (horasP + horasTP) + (n/qpe)*horasPE - o)/ (max(3,horasP+horasPE ) ) + rtx";
-        
-        Estructura.catedras = list;
-        f.aplicarFormula(false);
-
     }
 
 }
