@@ -12,6 +12,7 @@ import javafx.stage.Modality;
 import org.exa.Errores;
 import org.exa.Estructura;
 import org.exa.FileManager;
+import org.exa.constantes.ConstanteArchivo;
 import org.exa.formula.Formula;
 import org.exa.ui.mainwindow.MainWindow;
 import org.exa.ui.mainwindow.ResultRow;
@@ -95,7 +96,7 @@ public class mainWindowController implements Initializable{
 				//Generacion de la salida
 
 				try {
-					FileManager.generarSalida(Estructura.resultadoPath);
+					FileManager.generarSalida(ConstanteArchivo.PATH_ARCHIVO_RESULTADO);
 				} catch (IOException e) {
 					System.out.println("Error al generar la salida");
 					e.printStackTrace();
