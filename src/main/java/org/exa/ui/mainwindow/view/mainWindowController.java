@@ -111,6 +111,11 @@ public class mainWindowController implements Initializable{
 			//System.out.println(minimo.isSelected());
 
 	}
+
+	/***
+	 * Genera una ventana de advertencia con los mensajes pasados por parametro
+	 * @param errores Lista de mensajes que se listan en la ventana
+	 */
 	private void ventanaDeErrores(ArrayList<String> errores) {
 		/*Stage stage1 = new Stage();
 		BorderPane pane = new BorderPane();
@@ -182,6 +187,10 @@ public class mainWindowController implements Initializable{
 		this.main = main;
 	}
 
+	/***
+	 * Muestra un icono de advertencia en caso de que haya un error sintactico en la formula
+	 * y lo oculta en caso contrario
+	 */
 	public void setFormulaWarning(){
 
 		Formula.chequearFormula(Estructura.formula);

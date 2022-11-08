@@ -68,6 +68,11 @@ public class Window2Controller implements Initializable {
 			e.printStackTrace();
 		}
 	}
+
+	/***
+	 * Crea y llama un DirectoryChooser para seleccionar el directorio del archivo de salida,
+	 * y coloca el path en el TextField que corresponde
+	 */
 	@FXML
 	public void examinarArchResultado() {
 		DirectoryChooser directoryChooser = new DirectoryChooser();
