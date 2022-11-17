@@ -1,9 +1,13 @@
 package org.exa;
 
+import org.exa.constantes.ConstanteFormula;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.*;
 
 public class FileManager {
 
@@ -171,4 +175,31 @@ public static void generarSalida(String directorio) throws IOException{
 		throw new IOException(e);
 	}
 }
+
+/**
+ * Carga la configuracion inicial de la clase ConstanteFormula
+ * El archivo config debe estar cargado con variables tipo double, es decir que deben tener el "." -> 25.0
+ */
+public static void cargarConfig(String directorio){
+	Object ob = new Object();
+	try{
+		ob = new JSONParser().parse(new FileReader(directorio));
+	}catch (Exception e){
+		Errores.archivoIncorrecto = true;
+		e.printStackTrace();
+	}
+
+	JSONObject jso = (JSONObject) ob;
+	try{
+		ConstanteFormula.QPE = (Double) jso.get("QPE");
+		ConstanteFormula.QP_PRIMER_ANIO = (Double) jso.get("QP_PRIMER_ANIO");
+		ConstanteFormula.QP_ULTIMOS_ANIOS = (Double) jso.get("QP_ULTIMOS_ANIOS");
+	} catch(Exception e){
+		Errores.datosErroneos = true;
+		System.out.println("El archivo config no esta cargado correctamente");
+	}
+
+}
+
+
 }
