@@ -1,4 +1,5 @@
 import org.exa.*;
+import org.exa.constantes.ConstanteFormula;
 import org.junit.jupiter.api.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +16,19 @@ public class FileManagerTest {
         String resultado = new String(Files.readAllBytes(Paths.get(path))); // obtengo resultado
         Assertions.assertEquals("1+2*3",resultado); // assert esperado-resultado
     }
+    
+    @Test
+    public void  cargarConfigTest() throws IOException {
+        String directorio = System.getProperty("user.dir")+"/src/test/java/configTest.json";
+    	FileManager.cargarConfig(directorio);    	
+    	Object ob = new Object();
+    	ob = new JSONParser().parse(new FileReader(directorio));
+    	JSONObject jso = (JSONObject) ob;
+    	Assertions.assertEquals(21.0, ConstanteFormula.QPE);
+    }
 
    /* @Test
-    public void cargarCatedraDocente() throws Exception{
+    public void cargarCatedraDocente() throws IOException{
         String path = System.getProperty("user.dir")+"/src/test/java";
         
         FileManager.cargarCatedra(path + "/Catedra.csv");
@@ -44,7 +55,7 @@ public class FileManagerTest {
     }*/
  
    /* @Test
-    public void cargarFormulaTest() throws Exception{
+    public void cargarFormulaTest() throws IOException{
        String path = System.getProperty("user.dir")+"/src/test/java";
        Estructura.pathFormula = path + "/formula.txt";
        FileManager.cargarFormula();
