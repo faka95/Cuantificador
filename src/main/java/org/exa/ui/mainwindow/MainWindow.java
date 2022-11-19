@@ -11,9 +11,9 @@ import javafx.stage.WindowEvent;
 import org.exa.Estructura;
 import org.exa.FileManager;
 import org.exa.constantes.ConstanteArchivo;
-import org.exa.ui.Window2.Window2;
-import org.exa.ui.WindowsModificarF.WindowsModificarF;
+import org.exa.ui.addressModificationWindow.AddressModificationWindow;
 import org.exa.ui.mainwindow.view.mainWindowController;
+import org.exa.ui.windowModificarF.WindowsModificarF;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -86,10 +86,8 @@ public class MainWindow extends Application{
 	 * Crea una instancia de la ventana de modificion de las direcciones de los archivos de entrada
 	 * y la muestra
 	 */
-	public void newWindow() {
-
-		//Window2 w = new Window2();
-		Window2 windowDirecciones = new Window2();
+	public void windowModifyAddresses() {
+		AddressModificationWindow windowDirecciones = new AddressModificationWindow();
 		windowDirecciones.show(primaryStage,primaryStage.getIcons().get(0));
 	}
 	
@@ -97,7 +95,7 @@ public class MainWindow extends Application{
 	/***
 	 * Crea una instancia de la ventana de modificion de la formula y la muestra
 	 */
-	public void WindowSetFormula() {
+	public void windowSetFormula() {
 		WindowsModificarF windowF = new WindowsModificarF(this);
 		windowF.show(primaryStage,primaryStage.getIcons().get(0));
 	}

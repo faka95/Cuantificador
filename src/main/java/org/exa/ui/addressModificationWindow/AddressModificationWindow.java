@@ -1,6 +1,8 @@
-package org.exa.ui.Window2;
+package org.exa.ui.addressModificationWindow;
 
 import java.io.IOException;
+
+import org.exa.ui.addressModificationWindow.view.AddressModificationWindowController;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,15 +10,14 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.exa.ui.Window2.view.Window2Controller;
 
 
 
-public class Window2 {
+public class AddressModificationWindow {
 	
 	private Stage stage;
 	private BorderPane layout;
-	private Window2Controller controller;
+	private AddressModificationWindowController controller;
 
 
 	/***
@@ -27,11 +28,11 @@ public class Window2 {
 	 */
 	public  void show(Stage parentStage, Image image) {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Window2.class.getResource("view/Window2View.fxml"));
+		loader.setLocation(AddressModificationWindow.class.getResource("view/AddressModificationWindowView.fxml"));
 		try {
 			layout = loader.load();
 		} catch (IOException e) {
-			System.out.println("error en window2");
+			System.out.println("error en AddressModificationWindow");
 			e.printStackTrace();
 		}
 		this.controller = loader.getController();

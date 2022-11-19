@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="238.0" prefWidth="469.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.exa.ui.Window2.view.Window2Controller">
+<BorderPane prefHeight="238.0" prefWidth="469.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.exa.ui.addressModificationWindow.view.AddressModificationWindowController">
    <center>
       <VBox BorderPane.alignment="CENTER">
          <children>

@@ -43,9 +43,9 @@ public class mainWindowController implements Initializable{
 	 * Llama a la funcion newWindow de la clase MainWindow
 	 */
 	@FXML
-	public void accion1() {
+	public void accionBotonModificarDirecciones() {
 		
-		main.newWindow();
+		main.windowModifyAddresses();
 	}
 	/***
 	 * Accion del boton Aplicar Formula. Si las direcciones de los archivos de entrada no estan vacias,
@@ -58,7 +58,7 @@ public class mainWindowController implements Initializable{
 	 * 
 	 */
 	@FXML
-	public void AccionBotonAplicarFormula() {
+	public void accionBotonAplicarFormula() {
 		System.out.println(MainWindow.direccionArchivoCatedras);
 		System.out.println(MainWindow.direccionArchivoDocentes);
 		System.out.println(ConstanteArchivo.PATH_ARCHIVO_RESULTADO);
@@ -172,8 +172,8 @@ public class mainWindowController implements Initializable{
 	 * Llamaa la funcion WindowSetFormula() en la clase MainWindow, para abrir la ventana de modificacion de la formula
 	 */
 	@FXML
-	public void AccionModificarF(){
-		main.WindowSetFormula();
+	public void accionModificarF(){
+		main.windowSetFormula();
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

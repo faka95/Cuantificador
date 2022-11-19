@@ -1,10 +1,10 @@
-package org.exa.ui.WindowsModificarF;
+package org.exa.ui.windowModificarF;
 
 
 import java.io.IOException;
 
-import org.exa.ui.WindowsModificarF.view.WindowModificarFController;
 import org.exa.ui.mainwindow.MainWindow;
+import org.exa.ui.windowModificarF.view.WindowModificarFController;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

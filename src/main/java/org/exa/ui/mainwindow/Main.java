@@ -8,11 +8,9 @@ import org.exa.formula.Formula;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class Main {
 
-    private String formula;
     private static boolean minimo=false;
 
     /***
@@ -72,19 +70,6 @@ public class Main {
 
 
         if(!Errores.existenErrores()) {
-            ArrayList<ResultRow> lista = new ArrayList<ResultRow>();
-            Map<String, Integer> r = Estructura.resultado;
-            //HAY QUE BORRAR ESTO CUANDO HAYA ALGO EN EL RESULTADO PARA MOSTRAR
-
-				/*
-				r = new HashMap<String, Integer>();
-				Estructura.resultado = r;
-				r.put("matematicas 1", 5);
-				r.put("sistemas2", 8);
-				*/
-
-            //Generacion de la salida
-
             try {
                 FileManager.generarSalida(direccionSalida);
             } catch (IOException e) {
@@ -101,7 +86,6 @@ public class Main {
         }
 
 
-        //System.out.println(minimo.isSelected());
     }
 
     public static void ejecutar(String direccionCatedras,String direccionDocentes,String direccionSalida,String form){
