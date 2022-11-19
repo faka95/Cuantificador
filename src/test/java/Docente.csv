@@ -1,5 +1,2 @@
-Pedro,Matematica,2,1,0,3
-Maxi,Fisica,2,1,0,3
-Maria,Programacion,2,1,0,3
-Victoria,Discreta,2,1,0,3
-Pablo,Lineal,2,1,0,3
+Nombre,Catedra,horasT,horasP,horasPE,horasTP
+Cobo Hernan,Introduccion_a_la_Programacion_I,0,0,0,60
