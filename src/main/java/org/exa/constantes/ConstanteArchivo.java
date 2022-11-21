@@ -10,5 +10,8 @@ public class ConstanteArchivo {
 
     public static String NOMBRE_ARCHIVO_RESULTADO = "resultado.csv";
     public static String PATH_ARCHIVO_RESULTADO =  RESOURCES_DIR + "/" + NOMBRE_ARCHIVO_RESULTADO;
+    
+    public static String NOMBRE_ARCHIVO_CONFIG = "config.json";
+    public static String PATH_ARCHIVO_CONFIG = RESOURCES_DIR + "/" + NOMBRE_ARCHIVO_CONFIG;
 
 }

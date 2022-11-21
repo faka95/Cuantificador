@@ -45,7 +45,7 @@ public class Window2Controller implements Initializable {
 			this.direccionArchDocentes.setText(path);
 		}catch(NullPointerException e) {
 			this.direccionArchDocentes.setText("");
-			System.out.println("No se seleccion� archivo");
+			System.out.println("No se seleccion archivo");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

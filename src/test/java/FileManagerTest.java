@@ -1,9 +1,13 @@
 import org.exa.*;
+import org.exa.constantes.ConstanteFormula;
 import org.junit.jupiter.api.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.*;
 import java.nio.file.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.*;
 
 public class FileManagerTest {
 
@@ -15,60 +19,77 @@ public class FileManagerTest {
         String resultado = new String(Files.readAllBytes(Paths.get(path))); // obtengo resultado
         Assertions.assertEquals("1+2*3",resultado); // assert esperado-resultado
     }
+    
+    @Test
+    public void  cargarConfigTest() throws IOException {
+        String directorio = System.getProperty("user.dir")+"/src/test/java/configTest.json";
+    	FileManager.cargarConfig(directorio);    	
+    	Object ob = new Object();
+        try{
+            ob = new JSONParser().parse(new FileReader(directorio));
+        }catch(Exception e){
 
-   /* @Test
-    public void cargarCatedraDocente() throws Exception{
+        }
+    	JSONObject jso = (JSONObject) ob;
+    	Assertions.assertEquals(21.0, ConstanteFormula.QPE);
+    }
+
+    @Test
+    public void cargarCatedraDocente() throws IOException{
         String path = System.getProperty("user.dir")+"/src/test/java";
         
         FileManager.cargarCatedra(path + "/Catedra.csv");
         FileManager.cargarDocente(path + "/Docente.csv");
         List<Catedra> catedras = Estructura.catedras;
-        List<Catedra> catedrasEsperadas = new ArrayList<>();
-       /* Catedra cat = new Catedra("Matematica",2022, 3, 2, 1, 0,3, 60, 40);
-        cat.agregarDocente(new Docente("Pedro",2,1,0,3));
-        catedrasEsperadas.add(cat);
-        Catedra cat2 = new Catedra("Fisica",2022, 3, 2, 1, 0, 3, 60,40);
-        cat2.agregarDocente(new Docente("Maxi",2,1,0,3));
-        catedrasEsperadas.add(cat2);
-        Catedra cat3 = new Catedra("Programacion",2022, 3, 2, 1,0,3 , 60, 40);
-        cat3.agregarDocente(new Docente("Maria",2,1,0,3));
-        catedrasEsperadas.add(cat3);
-        Catedra cat4 = new Catedra("Discreta",2022, 3, 2, 1, 0,3, 60, 40);
-        cat4.agregarDocente(new Docente("Victoria",2,1,0,3));
-        catedrasEsperadas.add(cat4);
-        Catedra cat5 = new Catedra("Lineal",2022, 3, 2, 1, 0,3, 60, 40);
-        cat5.agregarDocente(new Docente("Pablo",2,1,0,3));
-        catedrasEsperadas.add(cat5);
+        Catedra catedraEsperada = new Catedra("Introduccion_a_la_Programacion_I");
+        catedraEsperada.putValue("anioMateria",1.0);
+        catedraEsperada.putValue("tipoPE",3.0);
+        catedraEsperada.putValue("horasP",3.0);
+        catedraEsperada.putValue("horasTP",2.0);
+        catedraEsperada.putValue("horasPE",1.0);
+        catedraEsperada.putValue("cantInscriptos",328.0);
+        catedraEsperada.putValue("cantRindieron",255.0);
+        
+        Docente docente = new Docente("Cobo Hernan");
+        docente.put("horasT",0.0);
+        docente.put("horasP",0.0);
+        docente.put("horasPE",0.0);
 
-        Assertions.assertEquals(catedrasEsperadas,catedras); 
-    }*/
+        docente.put("horasTP",60.0);
+
+
+        catedraEsperada.agregarDocente(docente);
+        List<Catedra> catedrasTest = new ArrayList();
+        catedrasTest.add(catedraEsperada);
+        Assertions.assertEquals(catedrasTest,catedras); 
+    }
  
-   /* @Test
-    public void cargarFormulaTest() throws Exception{
+   @Test
+    public void cargarFormulaTest() throws IOException{
        String path = System.getProperty("user.dir")+"/src/test/java";
        Estructura.pathFormula = path + "/formula.txt";
        FileManager.cargarFormula();
-       String formulaEsperada = "2+5";
+       String formulaEsperada = "n+qp+p+tp+qpe+pe+o";
        String formula = Estructura.formula;
        Assertions.assertEquals(formulaEsperada,formula);
     }
 
-    @Test
-    public void generarSalidaTest()throws IOException{
-        String path = System.getProperty("user.dir")+"/src/test/java";
-        FileManager.cargarCatedra(path + "/Catedra.csv"); // carga catedras en Estructura
-        FileManager.generarSalida(path); // genera archivo de salida csv con las catedras encontradas
-        String fileOutput = "", expectedOutput = "";
-        for (Catedra c : Estructura.catedras){ // se carga el resultado esperado dentro del csv
-            expectedOutput += c.getNombre() + "," + Estructura.resultado.get(c.getNombre()) + "\n";
-        }
+//    @Test
+//     public void generarSalidaTest()throws IOException{
+//         String path = System.getProperty("user.dir")+"/src/test/java";
+//         FileManager.cargarCatedra(path + "/Catedra.csv"); // carga catedras en Estructura
+//         FileManager.generarSalida(path); // genera archivo de salida csv con las catedras encontradas
+//         String fileOutput = "", expectedOutput = "";
+//         for (Catedra c : Estructura.catedras){ // se carga el resultado esperado dentro del csv
+//             expectedOutput += c.id_materia + ", " + c.nombreCatedra + ", " + c.cantidad + ", " + Estructura.resultado.get(c.getNombre) + "\n";
+//         }
         
-        FileReader reader = new FileReader(new File(path + "/salida.csv")); // se lee el archivo csv
-        int read = reader.read();
-        while (read != -1){
-            fileOutput += (char) read;
-            read = reader.read();
-        }
-        Assertions.assertEquals(fileOutput,expectedOutput); // se verifica que el contenido en el archivo y el esperado sean identicos
-	}*/
+//         FileReader reader = new FileReader(new File(path + "/salida.csv")); // se lee el archivo csv
+//         int read = reader.read();
+//         while (read != -1){
+//             fileOutput += (char) read;
+//             read = reader.read();
+//         }
+//         Assertions.assertEquals(fileOutput,expectedOutput); // se verifica que el contenido en el archivo y el esperado sean identicos
+// 	}
 }

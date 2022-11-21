@@ -11,7 +11,7 @@ public class Catedra {
     private String nombre;
     private HashMap<String, Double> variables;
     private List<Docente> docentes;
-    
+    private static int ID = 0;
     //---------------------------CONSTRUCTOR------------------------------------------- 
 
     public Catedra(String nombre) {
@@ -94,5 +94,9 @@ public class Catedra {
     
     public List<Docente> getDocentes(){
         return this.docentes;
+    }
+
+    public static int getIdMateria() {
+        return ID++;
     }
 }
