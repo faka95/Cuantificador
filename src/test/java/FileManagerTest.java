@@ -74,14 +74,14 @@ public class FileManagerTest {
        Assertions.assertEquals(formulaEsperada,formula);
     }
 
-   /* @Test
+   @Test
     public void generarSalidaTest()throws IOException{
         String path = System.getProperty("user.dir")+"/src/test/java";
         FileManager.cargarCatedra(path + "/Catedra.csv"); // carga catedras en Estructura
         FileManager.generarSalida(path); // genera archivo de salida csv con las catedras encontradas
         String fileOutput = "", expectedOutput = "";
         for (Catedra c : Estructura.catedras){ // se carga el resultado esperado dentro del csv
-            expectedOutput += c.getNombre() + "," + Estructura.resultado.get(c.getNombre()) + "\n";
+            expectedOutput += c.id_materia + ", " + c.nombreCatedra + ", " + c.cantidad + ", " + Estructura.resultado.get(c.getNombre) + "\n";
         }
         
         FileReader reader = new FileReader(new File(path + "/salida.csv")); // se lee el archivo csv
@@ -91,5 +91,5 @@ public class FileManagerTest {
             read = reader.read();
         }
         Assertions.assertEquals(fileOutput,expectedOutput); // se verifica que el contenido en el archivo y el esperado sean identicos
-	}*/
+	}
 }
