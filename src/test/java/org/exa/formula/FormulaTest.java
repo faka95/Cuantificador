@@ -129,7 +129,7 @@ public class FormulaTest {
         List<Argument> valoresEsperado = new ArrayList<>(){{
             add(new Argument(ConstVariable.HORAS_P, 2.0));
             add(new Argument(ConstVariable.HORAS_TP, 1.0));
-            add(new Argument(ConstVariable.QP, 4.0));
+            add(new Argument(ConstVariable.QP, 25.0));
         }};
 
         List<ArgumentTest> a1 = this.convertirLista(valorResultado);

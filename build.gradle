@@ -27,6 +27,20 @@ dependencies {
 
 }
 
+
+jar {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    manifest {
+        attributes(
+                'Main-Class': 'org.exa.ui.mainwindow.Main'
+        )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+ }
+
 test {
     useJUnitPlatform()
 }

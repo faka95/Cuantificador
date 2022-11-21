@@ -45,7 +45,7 @@ public class Window2Controller implements Initializable {
 			this.direccionArchDocentes.setText(path);
 		}catch(NullPointerException e) {
 			this.direccionArchDocentes.setText("");
-			System.out.println("No se seleccionó archivo");
+			System.out.println("No se seleccionï¿½ archivo");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -63,7 +63,7 @@ public class Window2Controller implements Initializable {
 			this.direccionArchCatedras.setText(path);
 		}catch(NullPointerException e) {
 			this.direccionArchCatedras.setText("");
-			System.out.println("No se seleccionó archivo");
+			System.out.println("No se seleccionï¿½ archivo");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -84,7 +84,7 @@ public class Window2Controller implements Initializable {
 			this.direccionArchResultado.setText(path);
 		}catch(NullPointerException e) {
 			this.direccionArchResultado.setText("");
-			System.out.println("No se seleccionó archivo");
+			System.out.println("No se seleccionï¿½ archivo");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -106,9 +106,18 @@ public class Window2Controller implements Initializable {
 		if(direccionCatedras!=null){
 			MainWindow.direccionArchivoCatedras=direccionCatedras;
 		}
+		/* 
 		if(direccionResultado!=null && direccionResultado!="") {
 			ConstanteArchivo.PATH_ARCHIVO_RESULTADO = direccionResultado + "/" + ConstanteArchivo.NOMBRE_ARCHIVO_RESULTADO;
+		}*/
+		
+		if(direccionResultado!=null && !direccionResultado.isEmpty()) {
+			//Si cambia es porque el path es otro
+			if(!direccionResultado.endsWith(ConstanteArchivo.NOMBRE_ARCHIVO_RESULTADO)){
+				ConstanteArchivo.PATH_ARCHIVO_RESULTADO = direccionResultado + "/" + ConstanteArchivo.NOMBRE_ARCHIVO_RESULTADO;
+			}
 		}
+		
 		cancelar.fire();
 	}
 	/***
@@ -123,6 +132,7 @@ public class Window2Controller implements Initializable {
 		direccionArchDocentes.setText(MainWindow.direccionArchivoDocentes);		
 		direccionArchCatedras.setText(MainWindow.direccionArchivoCatedras);
 		direccionArchResultado.setText(ConstanteArchivo.PATH_ARCHIVO_RESULTADO);
+		//direccionArchResultado.setText(Estructura.resultadoPath);
 	}
 	/***
 	 * Coloca el foco de la ventana en el boton de Cancelar
