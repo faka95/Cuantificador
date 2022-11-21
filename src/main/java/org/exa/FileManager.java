@@ -167,7 +167,7 @@ public static void generarSalida(String directorio) throws IOException{
 	try {
 		FileWriter fileWriter = new FileWriter(directorio);
 		for (Catedra c : Estructura.catedras){
-			fileWriter.write(c.id_materia + ", " + c.nombreCatedra + ", " + c.cantidad + ", " + Estructura.resultado.get(c.getNombre) + "\n");
+			fileWriter.write(c.getIdMateria() + ", " + c.getNombre() + ", " + Estructura.resultado.get(c.getNombre()) + "\n");
 		}
 		fileWriter.close();
 	} catch (IOException e){
