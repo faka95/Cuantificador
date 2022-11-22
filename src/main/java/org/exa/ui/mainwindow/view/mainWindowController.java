@@ -59,66 +59,20 @@ public class mainWindowController implements Initializable{
 	 */
 	@FXML
 	public void accionBotonAplicarFormula() {
-		System.out.println(MainWindow.direccionArchivoCatedras);
-		System.out.println(MainWindow.direccionArchivoDocentes);
-		System.out.println(ConstanteArchivo.PATH_ARCHIVO_RESULTADO);
-			Main.ejecutar(MainWindow.direccionArchivoCatedras, MainWindow.direccionArchivoDocentes,ConstanteArchivo.PATH_ARCHIVO_RESULTADO,this.minimo.isSelected());
-
-			/*
-			FileManager.cargarCatedra(MainWindow.direccionArchivoCatedras);
-			FileManager.cargarDocente(MainWindow.direccionArchivoDocentes);
-			Formula f = new Formula();
-
-			Formula.chequearFormula(Estructura.formula);
-
-			if(Errores.esPosibleAplicar()){
-				f.aplicarFormula(this.minimo.isSelected());
+		Main.ejecutar(MainWindow.direccionArchivoCatedras, MainWindow.direccionArchivoDocentes,ConstanteArchivo.getPATH_ARCHIVO_RESULTADO(),this.minimo.isSelected());
+		if(!Errores.existenErrores()) {
+			ArrayList<ResultRow> lista = new ArrayList<ResultRow>();
+			Map<String, Integer> r = Estructura.resultado;
+			Object[] keys = r.keySet().toArray();
+			for (int i = 0; i < r.size(); i++) {
+				lista.add(new ResultRow((String) keys[i], r.get(keys[i])));
 			}
-			
-
-			if(!Errores.existenErrores()) {
-				ArrayList<ResultRow> lista = new ArrayList<ResultRow>();
-				Map<String, Integer> r = Estructura.resultado;
-				System.out.println(Estructura.formula);
-				System.out.println(Estructura.resultado);
-				System.out.println(f.aplicarFormula(this.minimo.isSelected()));
-				//HAY QUE BORRAR ESTO CUANDO HAYA ALGO EN EL RESULTADO PARA MOSTRAR
-
-				/*
-				r = new HashMap<String, Integer>();
-				Estructura.resultado = r;
-				r.put("matematicas 1", 5);
-				r.put("sistemas2", 8);
-			*/
-
-				if(!Errores.existenErrores()) {
-					ArrayList<ResultRow> lista = new ArrayList<ResultRow>();
-					Map<String, Integer> r = Estructura.resultado;
-					Object[] keys = r.keySet().toArray();
-					for (int i = 0; i < r.size(); i++) {
-						lista.add(new ResultRow((String) keys[i], r.get(keys[i])));
-					}
-					Table t = new Table(table);
-					t.setData(lista);
-				}
-				//Generacion de la salida
-
-				/*
-				try {
-					FileManager.generarSalida(ConstanteArchivo.PATH_ARCHIVO_RESULTADO);
-				} catch (IOException e) {
-					System.out.println("Error al generar la salida");
-					e.printStackTrace();
-				}
-				 */
-				else{
-					ventanaDeErrores(Errores.getErrores());
-				}
-
-			Errores.setVariables();
-
-			//System.out.println(minimo.isSelected());
-
+			Table t = new Table(table);
+			t.setData(lista);
+		}else{
+			ventanaDeErrores(Errores.getErrores());
+		}
+		Errores.setVariables();
 	}
 
 	/***

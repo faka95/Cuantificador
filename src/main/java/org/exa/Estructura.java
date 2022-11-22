@@ -12,7 +12,7 @@ public class Estructura {
     public static Map<String, Integer> resultado = new HashMap<String, Integer>();
     public static String formula; 
     public static String pathFormula = ConstanteArchivo.PATH_ARCHIVO_FORMULA;
-    public static String resultadoPath = ConstanteArchivo.PATH_ARCHIVO_RESULTADO;
+    public static String resultadoPath = ConstanteArchivo.getPATH_ARCHIVO_RESULTADO();
 
     /**
      * Busca en la lista de catedras la catedra con el mismo nombre

@@ -109,16 +109,8 @@ public class AddressModificationWindowController implements Initializable {
 		if(direccionCatedras!=null){
 			MainWindow.direccionArchivoCatedras=direccionCatedras;
 		}
-		/* 
-		if(direccionResultado!=null && direccionResultado!="") {
-			ConstanteArchivo.PATH_ARCHIVO_RESULTADO = direccionResultado + "/" + ConstanteArchivo.NOMBRE_ARCHIVO_RESULTADO;
-		}*/
-		
 		if(direccionResultado!=null && !direccionResultado.isEmpty()) {
-			//Si cambia es porque el path es otro
-			if(!direccionResultado.endsWith(ConstanteArchivo.NOMBRE_ARCHIVO_RESULTADO)){
-				ConstanteArchivo.PATH_ARCHIVO_RESULTADO = direccionResultado + "/" + ConstanteArchivo.NOMBRE_ARCHIVO_RESULTADO;
-			}
+			ConstanteArchivo.PATH_ARCHIVO_RESULTADO = direccionResultado;
 		}
 		
 		cancelar.fire();
