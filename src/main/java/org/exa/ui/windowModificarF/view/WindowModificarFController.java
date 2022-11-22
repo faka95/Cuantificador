@@ -1,4 +1,4 @@
-package org.exa.ui.WindowsModificarF.view;
+package org.exa.ui.windowModificarF.view;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,7 +9,6 @@ import org.exa.Estructura;
 import org.exa.FileManager;
 import org.exa.ui.mainwindow.MainWindow;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 

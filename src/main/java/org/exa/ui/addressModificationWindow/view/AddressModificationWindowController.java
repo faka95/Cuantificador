@@ -1,4 +1,4 @@
-package org.exa.ui.Window2.view;
+package org.exa.ui.addressModificationWindow.view;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class Window2Controller implements Initializable {
+public class AddressModificationWindowController implements Initializable {
 	@FXML
 	public TextField direccionArchDocentes;
 	@FXML
@@ -39,6 +39,7 @@ public class Window2Controller implements Initializable {
 	public void examinarArchDocentes() {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Open Resource File");
+		fileChooser.setInitialDirectory(new File(ConstanteArchivo.BASE_DIR));
 		File file = fileChooser.showOpenDialog(stage);
 		try {
 			String path=file.getPath();
@@ -57,6 +58,7 @@ public class Window2Controller implements Initializable {
 	public void examinarArchCatedras() {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Open Resource File");
+		fileChooser.setInitialDirectory(new File(ConstanteArchivo.BASE_DIR));
 		File file = fileChooser.showOpenDialog(stage);
 		try {
 			String path=file.getPath();
@@ -77,6 +79,7 @@ public class Window2Controller implements Initializable {
 	public void examinarArchResultado() {
 		DirectoryChooser directoryChooser = new DirectoryChooser();
 		directoryChooser.setTitle("Open Resource File");
+		directoryChooser.setInitialDirectory(new File(ConstanteArchivo.BASE_DIR));
 		
 		File file = directoryChooser.showDialog(stage);
 		try {

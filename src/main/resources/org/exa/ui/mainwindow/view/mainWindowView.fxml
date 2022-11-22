@@ -30,7 +30,7 @@
             </TableView>
             <HBox alignment="BASELINE_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#AccionBotonAplicarFormula" text="Aplicar Formula" />
+                  <Button mnemonicParsing="false" onAction="#accionBotonAplicarFormula" text="Aplicar Formula" />
                   <CheckBox fx:id="minimo" mnemonicParsing="false" text="Minimo un Ayudante" />
                </children>
             </HBox>
@@ -52,8 +52,8 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#accion1" prefWidth="300.0" text="Cargar Archivos" />
-                  <Button mnemonicParsing="false" onAction="#AccionModificarF" prefWidth="300.0" text="Modificar formula" />
+                  <Button mnemonicParsing="false" onAction="#accionBotonModificarDirecciones" prefWidth="300.0" text="Cargar Archivos" />
+                  <Button mnemonicParsing="false" onAction="#accionModificarF" prefWidth="300.0" text="Modificar formula" />
                </children>
             </HBox>
          </children>

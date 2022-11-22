@@ -11,14 +11,13 @@ import javafx.scene.layout.Priority;
 import javafx.stage.Modality;
 import org.exa.Errores;
 import org.exa.Estructura;
-import org.exa.FileManager;
 import org.exa.constantes.ConstanteArchivo;
 import org.exa.formula.Formula;
+import org.exa.ui.mainwindow.Main;
 import org.exa.ui.mainwindow.MainWindow;
 import org.exa.ui.mainwindow.ResultRow;
 import org.exa.ui.mainwindow.Table;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Map;
@@ -44,9 +43,9 @@ public class mainWindowController implements Initializable{
 	 * Llama a la funcion newWindow de la clase MainWindow
 	 */
 	@FXML
-	public void accion1() {
+	public void accionBotonModificarDirecciones() {
 		
-		main.newWindow();
+		main.windowModifyAddresses();
 	}
 	/***
 	 * Accion del boton Aplicar Formula. Si las direcciones de los archivos de entrada no estan vacias,
@@ -59,7 +58,13 @@ public class mainWindowController implements Initializable{
 	 * 
 	 */
 	@FXML
-	public void AccionBotonAplicarFormula() {
+	public void accionBotonAplicarFormula() {
+		System.out.println(MainWindow.direccionArchivoCatedras);
+		System.out.println(MainWindow.direccionArchivoDocentes);
+		System.out.println(ConstanteArchivo.PATH_ARCHIVO_RESULTADO);
+			Main.ejecutar(MainWindow.direccionArchivoCatedras, MainWindow.direccionArchivoDocentes,ConstanteArchivo.PATH_ARCHIVO_RESULTADO,this.minimo.isSelected());
+
+			/*
 			FileManager.cargarCatedra(MainWindow.direccionArchivoCatedras);
 			FileManager.cargarDocente(MainWindow.direccionArchivoDocentes);
 			Formula f = new Formula();
@@ -84,28 +89,31 @@ public class mainWindowController implements Initializable{
 				Estructura.resultado = r;
 				r.put("matematicas 1", 5);
 				r.put("sistemas2", 8);
-				*/
+			*/
 
-				Object[] keys = r.keySet().toArray();
-				for (int i = 0; i < r.size(); i++) {
-					lista.add(new ResultRow((String) keys[i], r.get(keys[i])));
+				if(!Errores.existenErrores()) {
+					ArrayList<ResultRow> lista = new ArrayList<ResultRow>();
+					Map<String, Integer> r = Estructura.resultado;
+					Object[] keys = r.keySet().toArray();
+					for (int i = 0; i < r.size(); i++) {
+						lista.add(new ResultRow((String) keys[i], r.get(keys[i])));
+					}
+					Table t = new Table(table);
+					t.setData(lista);
 				}
-				Table t = new Table(table);
-				t.setData(lista);
-
 				//Generacion de la salida
 
+				/*
 				try {
 					FileManager.generarSalida(ConstanteArchivo.PATH_ARCHIVO_RESULTADO);
 				} catch (IOException e) {
 					System.out.println("Error al generar la salida");
 					e.printStackTrace();
 				}
-			}
-			else
-			{
-				ventanaDeErrores(Errores.getErrores());
-			}
+				 */
+				else{
+					ventanaDeErrores(Errores.getErrores());
+				}
 
 			Errores.setVariables();
 
@@ -164,8 +172,8 @@ public class mainWindowController implements Initializable{
 	 * Llamaa la funcion WindowSetFormula() en la clase MainWindow, para abrir la ventana de modificacion de la formula
 	 */
 	@FXML
-	public void AccionModificarF(){
-		main.WindowSetFormula();
+	public void accionModificarF(){
+		main.windowSetFormula();
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
