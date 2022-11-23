@@ -13,7 +13,9 @@ public class Table {
 	public Table(TableView<ResultRow> t) {
 		table = t;
 	}
-	/***
+
+	
+	/**
 	 * Coloca los elementos de la lista en la TableView pasada en el constructor de la clase
 	 * @param data
 	 */

@@ -11,6 +11,7 @@ public class Errores{
     public static boolean variableIncorrecta = false;
     public static boolean errorSintactico = false;
 
+    
     public static boolean existenErrores(){
         return (archivoIncorrecto || catedraFaltante || docenteFaltante || datosErroneos || variableIncorrecta || resultadoIncorrecto || errorSintactico);
     }
@@ -22,6 +23,7 @@ public class Errores{
     private static String resultadoIncorrecto_mensaje = "Hubo un error en la aplicacion de la formula";
     private static String variableIncorrecta_mensaje = "Hay una variable incorrecta dentro de la formula";
     private static String errorSintactico_mensaje = "Hay un error sintactico en la formula";
+
 
     public static ArrayList<String> getErrores(){
         ArrayList<String> errores= new ArrayList<String>();

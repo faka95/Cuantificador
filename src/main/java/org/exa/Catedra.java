@@ -8,17 +8,18 @@ import java.util.Set;
 import java.util.Map;
 
 public class Catedra {
+
     private String nombre;
     private HashMap<String, Double> variables;
     private List<Docente> docentes;
-    private static int ID = 0;
-    //---------------------------CONSTRUCTOR------------------------------------------- 
+
 
     public Catedra(String nombre) {
         this.nombre = nombre;
         variables = new HashMap<>();
         docentes = new ArrayList<>();
     }
+
 
     public Catedra(String nombre, HashMap<String, Double> variables){
         this.nombre = nombre;
@@ -31,6 +32,7 @@ public class Catedra {
         return nombre;
     }
 
+
     public void putValue(String key, Double value) {
         variables.put(key, value);
     }
@@ -40,32 +42,38 @@ public class Catedra {
         return 0;
     }
 
+
     public Double getValue(String key) {
         return variables.get(key);
     }
+
 
     public Set<String> getKeys() {
         return variables.keySet();
     }
 
-    //-----------------------------CLASS-METHODS-----------------------------------------
 
     public int getCantDocentes() {
         return docentes.size();
     }
 
-  @Override
+
+    @Override
     public String toString() {
         return "Catedra [nombre=" + nombre + ", variables=" + variables + ", docentes=" + docentes + "]";
     }
+
+
     public boolean equals(Object obj) {
         Catedra compare = (Catedra) obj;
         return this.toString().equals(compare.toString());
     }
 
+
     public void agregarDocente(Docente docente){
         docentes.add(docente);
     }
+
 
     public Double getAtributo(String string) {
 
@@ -94,9 +102,5 @@ public class Catedra {
     
     public List<Docente> getDocentes(){
         return this.docentes;
-    }
-
-    public static int getIdMateria() {
-        return ID++;
     }
 }

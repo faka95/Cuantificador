@@ -61,6 +61,7 @@ public class Main {
         }
     }
 
+
     private static void ejecutarFormula(String direccionCatedras,String direccionDocentes,String direccionSalida,String form){
         FileManager.cargarCatedra(direccionCatedras);
         FileManager.cargarDocente(direccionDocentes);
@@ -92,21 +93,25 @@ public class Main {
 
     }
 
+
     public static void ejecutar(String direccionCatedras,String direccionDocentes,String direccionSalida,String form){
         Estructura.formula = form;
         ejecutarFormula(direccionCatedras,direccionDocentes, direccionSalida, form);
     }
+
 
     public static void ejecutar(String direccionCatedras,String direccionDocentes,String direccionSalida){
         FileManager.cargarFormula();
         ejecutarFormula(direccionCatedras,direccionDocentes, direccionSalida, Estructura.formula);
     }
 
+
     public static void ejecutar(String direccionCatedras,String direccionDocentes,String direccionSalida,String form, boolean min){
         minimo=min;
         ejecutar(direccionCatedras,direccionDocentes, direccionSalida, form);
     }
 
+    
     public static void ejecutar(String direccionCatedras,String direccionDocentes,String direccionSalida,boolean min){
         minimo = min;
         ejecutar(direccionCatedras,direccionDocentes, direccionSalida);

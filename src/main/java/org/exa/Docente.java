@@ -17,11 +17,11 @@ public class Docente {
         this.nombre = nombre;
     }
 
+    
     public void put(String key, Double value) {
         variables.put(key,value);
     }
 
-    //-----------------------------GETTERS-----------------------------------------
     
     public String getNombre() {
         return nombre;
@@ -56,8 +56,6 @@ public class Docente {
 
     @Override
     public String toString() {
-        // return "Docente [nombre=" + nombre + ", horasT=" + horasT + ", horasP=" + horasP + ", horasTP=" + horasTP
-        //         + ", horasPE=" + horasPE + "]";
         return "Docente [nombre=" + nombre + "]";
     }
 

@@ -32,10 +32,4 @@ Trabajo realizado para la cursada de taller de metodos agiles 2022. La tarea asi
     gradle run
     ```
 
-- *(Opcionalmente)* Ejecutar el comando gradle build jar para construir un ejecutable que se encontrara en el directorio build/lib/
-    ```
-    gradle build jar
-    ```
-
-
 

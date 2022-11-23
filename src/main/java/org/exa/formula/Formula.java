@@ -84,7 +84,7 @@ public class Formula {
      * @param minimoUno es una variable boolean donde nos informa atraves de la interfaz si se necesita como minimo un interino.
      * @return boolean informando si se pudo aplicar la formula.
      */
-    public boolean aplicarFormula(boolean minimoUno){
+    public void aplicarFormula(boolean minimoUno){
         Expression e;
 
         for (Catedra cat : Estructura.catedras) {  
@@ -94,7 +94,6 @@ public class Formula {
             this.cargarArgumentos(e, argumentos);
 
             int resultado = (int)Math.round(e.calculate());
-
             // Casos especiales
             if(resultado == 0 && minimoUno)
                 resultado = 1;
@@ -106,8 +105,6 @@ public class Formula {
             Estructura.resultado.put(cat.getNombre(), resultado);
 
         }
-
-        return true; //TODO verificar
     }
 
 

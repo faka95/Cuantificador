@@ -32,6 +32,7 @@ public class AddressModificationWindowController implements Initializable {
 	
 	private Stage stage;
 
+	
 	/***
 	 * Crea y llama un FileChoser para seleccionar el archivo de docentes, y coloca el path en el TextField que corresponde
 	 */
@@ -52,6 +53,8 @@ public class AddressModificationWindowController implements Initializable {
 		}
 		
 	}
+
+
 	/***
 	 * Crea y llama un FileChoser para seleccionar el archivo de catedras, y coloca el path en el TextField que corresponde
 	 */
@@ -70,6 +73,7 @@ public class AddressModificationWindowController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+
 
 	/***
 	 * Crea y llama un DirectoryChooser para seleccionar el directorio del archivo de salida,
@@ -94,6 +98,7 @@ public class AddressModificationWindowController implements Initializable {
 		
 	}
 
+
 	/***
 	 * Accion del boton Aceptar. En el caso de que un TextField no este Vacio, guarda su contenido en la variable estatica
 	 *  correspondiente en MainWindow. Luego cierra la Ventana
@@ -115,7 +120,9 @@ public class AddressModificationWindowController implements Initializable {
 		
 		cancelar.fire();
 	}
-	/***
+
+
+	/**
 	 * Cierra la ventana sin guardar nada
 	 */
 	@FXML
@@ -127,22 +134,27 @@ public class AddressModificationWindowController implements Initializable {
 		direccionArchDocentes.setText(MainWindow.direccionArchivoDocentes);		
 		direccionArchCatedras.setText(MainWindow.direccionArchivoCatedras);
 		direccionArchResultado.setText(ConstanteArchivo.PATH_ARCHIVO_RESULTADO);
-		//direccionArchResultado.setText(Estructura.resultadoPath);
 	}
-	/***
+
+
+	/**
 	 * Coloca el foco de la ventana en el boton de Cancelar
 	 */
 	public void setFocusOnCancel() {
 		this.cancelar.requestFocus();
 	}
-	/***
+
+
+	/**
 	 * muestra la imagen en ImageView
 	 * @param image Imagen a mostrar
 	 */
 	public void setImage(Image image) {
 		visualizadorDeImagen.setImage(image);
 	}
-	/***
+
+
+	/**
 	 * Da acceso a este controlador a la stage de la ventana  de modificar direcciones de archivos de entrada
 	 * @param stage Stage de la ventana
 	 */

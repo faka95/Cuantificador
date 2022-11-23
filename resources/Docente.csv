@@ -1,19 +1,16 @@
-Nombre,Catedra,horasT,horasP,horasPE,horasTP
-Cobo Hernan,Introduccion_a_la_Programacion_I,0,0,0,60
-Leonardi Carmen,Introduccion_a_la_Programacion_I,0,0,0,60
-Romero Maria,Introduccion_a_la_Programacion_I,0,0,0,45
-Martinez Yolanda,Introduccion_a_la_Programacion_I,0,0,0,45
-Gomez Leandro,Introduccion_a_la_Programacion_I,0,0,0,45
-Lima Santiago,Introduccion_a_la_Programacion_I,0,0,0,45
-Amendola Federico,Analisis_y_Diseño_de_Algoritmos_I,0,0,45,0
-Martinez Liliana,Analisis_y_Diseño_de_Algoritmos_I,0,0,0,60
-Favre Liliana,Analisis_y_Diseño_de_Algoritmos_I,0,0,0,45
-Pereira Claudia,Analisis_y_Diseño_de_Algoritmos_I,0,0,0,60
-Curti Hugo,Introduccion_a_la_Arquitectura_de_Sistemas,0,0,0,30
-Collado Cecilia,Introduccion_a_la_Arquitectura_de_Sistemas,0,45,0,0
-Larsen Karina,Introduccion_a_la_Arquitectura_de_Sistemas,0,45,0,0
-Todorovich Elias,Introduccion_a_la_Arquitectura_de_Sistemas,0,0,0,30
-Marcos Clauda,Metodologias_de_Desarrollo_de_Software_I,0,0,0,45
-Rodriguez Guillermo,Metodologias_de_Desarrollo_de_Software_I,0,45,30,0
-Diaz Pace Andres,Metodologias_de_Desarrollo_de_Software_I,0,45,30,0
-Vidal Santiago,Metodologias_de_Desarrollo_de_Software_I,0,0,0,45
+Nombre,Catedra,horasP,horasPE,horasTP
+Amendola Federico,Analisis_y_Diseño_de_Algoritmos_I,0,45,0
+Martinez Liliana,Analisis_y_Diseño_de_Algoritmos_I,0,0,60
+Favre Liliana,Analisis_y_Diseño_de_Algoritmos_I,0,0,45
+Pereira Claudia,Analisis_y_Diseño_de_Algoritmos_I,0,0,60
+Marcos Clauda,Metodologias_de_Desarrollo_de_Software_I,0,0,45
+Rodriguez Guillermo,Metodologias_de_Desarrollo_de_Software_I,45,30,0
+Diaz Pace Andres,Metodologias_de_Desarrollo_de_Software_I,45,30,0
+Vidal Santiago,Metodologias_de_Desarrollo_de_Software_I,0,0,45
+Dos Reis Rosa,Ciencias_de_la_Computacion_II, 0, 0, 45 
+Mauco Virginia,Ciencias_de_la_Computacion_II, 0, 0, 60
+Tristán Paula,Ciencias_de_la_Computacion_II, 0, 0, 30
+Tolbaños Diego,Ciencias_de_la_Computacion_II, 0, 0, 45
+Mayorano Fernando,Comunicacion_de_Datos_II, 30, 30, 0 
+Risso Mariano,Comunicacion_de_Datos_II, 30, 30, 0
+Rubiales Aldo,Comunicacion_de_Datos_II, 30, 15, 0

@@ -38,7 +38,9 @@ public class mainWindowController implements Initializable{
 	private MainWindow main;
 	@FXML
 	private Label label_error;
-	/***
+
+
+	/**
 	 * Accion del boton para modificar las direcciones de los archivos de entrada.
 	 * Llama a la funcion newWindow de la clase MainWindow
 	 */
@@ -47,7 +49,9 @@ public class mainWindowController implements Initializable{
 		
 		main.windowModifyAddresses();
 	}
-	/***
+
+
+	/**
 	 * Accion del boton Aplicar Formula. Si las direcciones de los archivos de entrada no estan vacias,
 	 * Llama la funcion FileManager.cargarDocente(MainWindow.direccionArchivoDocentes).
 	 * Llama la funcion FileManager.cargarCatedra(MainWindow.direccionArchivoCatedras).
@@ -75,14 +79,12 @@ public class mainWindowController implements Initializable{
 		Errores.setVariables();
 	}
 
-	/***
+
+	/**
 	 * Genera una ventana de advertencia con los mensajes pasados por parametro
 	 * @param errores Lista de mensajes que se listan en la ventana
 	 */
 	private void ventanaDeErrores(ArrayList<String> errores) {
-		/*Stage stage1 = new Stage();
-		BorderPane pane = new BorderPane();
-		VBox vBox = new VBox();*/
 		Alert alert = new Alert(AlertType.WARNING);
 		alert.setTitle("Errores");
 		String content = new String("-" + errores.get(0));
@@ -101,29 +103,11 @@ public class mainWindowController implements Initializable{
 		alert.initModality(Modality.WINDOW_MODAL);
 		alert.showAndWait();
 		
-		/*
-		ObservableList<Label> labels = FXCollections.observableArrayList();
-		for(int i=0;i<errores.size();i++) {
-			
-			Label newLabel = new Label(errores.get(i));
-			newLabel.setPrefHeight(20);
-			labels.add(newLabel);
-		}
-		vBox.getChildren().addAll(labels);
-		vBox.setSpacing(10);
-		pane.setCenter(vBox);
-		pane.setPadding(new Insets(10));
-		//pane.setPrefHeight(vBox.getPrefHeight());
-		Scene scene1 = new Scene(pane,-1,-1);//20*2*labels.size());
-		stage1.setScene(scene1);
-		stage1.initModality(Modality.WINDOW_MODAL);
-		stage1.initOwner(main.primaryStage);
-
-		stage1.showAndWait();*/
 	}
 	
-	/***
-	 * Llamaa la funcion WindowSetFormula() en la clase MainWindow, para abrir la ventana de modificacion de la formula
+
+	/**
+	 * Llama la funcion WindowSetFormula() en la clase MainWindow, para abrir la ventana de modificacion de la formula
 	 */
 	@FXML
 	public void accionModificarF(){
@@ -135,7 +119,9 @@ public class mainWindowController implements Initializable{
 		this.imagenFormula.setImage(new Image(getClass().getResource("warning_icon.png").toString()));
 		this.setFormulaWarning();
 	}
-	/***
+
+
+	/**
 	 * Muestra la el texto pasado por parametro en el TextField de la ventana principal
 	 * @param s formula a ser mostrada
 	 */
@@ -150,7 +136,8 @@ public class mainWindowController implements Initializable{
 		this.main = main;
 	}
 
-	/***
+	
+	/**
 	 * Muestra un icono de advertencia en caso de que haya un error sintactico en la formula
 	 * y lo oculta en caso contrario
 	 */

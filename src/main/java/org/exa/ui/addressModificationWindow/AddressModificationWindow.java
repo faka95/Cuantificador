@@ -20,7 +20,7 @@ public class AddressModificationWindow {
 	private AddressModificationWindowController controller;
 
 
-	/***
+	/**
 	 * Carga el archivo FXML que corresponde a la ventana de modificacion de direcciones de archivos de entrada
 	 * , almacena el controlador en una variable y muestra la ventana
 	 * @param image Imagen para poner de titulo en la ventana
@@ -45,14 +45,6 @@ public class AddressModificationWindow {
 		controller.setImage(image);
 		controller.setStage(stage);
 		stage.getIcons().add(image);
-		stage.showAndWait();
-
-		
+		stage.showAndWait();		
 	}
-
-
-
-
-	
-
 }

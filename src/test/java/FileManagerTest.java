@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.*;
 import java.nio.file.*;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
@@ -20,6 +19,7 @@ public class FileManagerTest {
         Assertions.assertEquals("1+2*3",resultado); // assert esperado-resultado
     }
     
+
     @Test
     public void  cargarConfigTest() throws IOException {
         String directorio = System.getProperty("user.dir")+"/src/test/java/configTest.json";
@@ -33,6 +33,7 @@ public class FileManagerTest {
     	JSONObject jso = (JSONObject) ob;
     	Assertions.assertEquals(21.0, ConstanteFormula.QPE);
     }
+
 
     @Test
     public void cargarCatedraDocente() throws IOException{
@@ -63,6 +64,7 @@ public class FileManagerTest {
         catedrasTest.add(catedraEsperada);
         Assertions.assertEquals(catedrasTest,catedras); 
     }
+    
  
    @Test
     public void cargarFormulaTest() throws IOException{
@@ -73,23 +75,4 @@ public class FileManagerTest {
        String formula = Estructura.formula;
        Assertions.assertEquals(formulaEsperada,formula);
     }
-
-//    @Test
-//     public void generarSalidaTest()throws IOException{
-//         String path = System.getProperty("user.dir")+"/src/test/java";
-//         FileManager.cargarCatedra(path + "/Catedra.csv"); // carga catedras en Estructura
-//         FileManager.generarSalida(path); // genera archivo de salida csv con las catedras encontradas
-//         String fileOutput = "", expectedOutput = "";
-//         for (Catedra c : Estructura.catedras){ // se carga el resultado esperado dentro del csv
-//             expectedOutput += c.id_materia + ", " + c.nombreCatedra + ", " + c.cantidad + ", " + Estructura.resultado.get(c.getNombre) + "\n";
-//         }
-        
-//         FileReader reader = new FileReader(new File(path + "/salida.csv")); // se lee el archivo csv
-//         int read = reader.read();
-//         while (read != -1){
-//             fileOutput += (char) read;
-//             read = reader.read();
-//         }
-//         Assertions.assertEquals(fileOutput,expectedOutput); // se verifica que el contenido en el archivo y el esperado sean identicos
-// 	}
 }

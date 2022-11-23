@@ -20,14 +20,16 @@ public class WindowsModificarF {
 	private WindowModificarFController controller;
 	private MainWindow main;
 	
-	/***
+	/**
 	 * Contructor de la clase que adminstra la ventana de modificion de la formula
 	 * @param main Ventana principal
 	 */
 	public WindowsModificarF(MainWindow main) {
 		this.main = main;
 	}
-	/***
+
+
+	/**
 	 * Carga el archivo FXML que corresponde a la ventana de modificacion de la formula
 	 * , almacena el controlador en una variable y muestra la ventana
 	 * @param image Imagen para poner de titulo en la ventana

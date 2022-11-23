@@ -49,11 +49,12 @@ public class MainWindow extends Application{
 
 		FileManager.cargarFormula();
 		loadDirections();
-		System.out.println(direccionArchivoCatedras + "---" + direccionArchivoDocentes);
 		displayWindow();
 		
 	}
-	/***
+
+
+	/**
 	 * Carga el archivo FXML que corresponde a la ventana principal, almacena el controlador en una variable, carga
 	 * la imagen para el icono de la aplicacion, y muestra la ventana
 	 */
@@ -82,7 +83,8 @@ public class MainWindow extends Application{
 		
 	}
 	
-	/***
+
+	/**
 	 * Crea una instancia de la ventana de modificion de las direcciones de los archivos de entrada
 	 * y la muestra
 	 */
@@ -92,7 +94,7 @@ public class MainWindow extends Application{
 	}
 	
 
-	/***
+	/**
 	 * Crea una instancia de la ventana de modificion de la formula y la muestra
 	 */
 	public void windowSetFormula() {
@@ -100,7 +102,8 @@ public class MainWindow extends Application{
 		windowF.show(primaryStage,primaryStage.getIcons().get(0));
 	}
 	
-	/***
+
+	/**
 	 * Muestra la formula pasada por parametro en la ventana principal
 	 * @param s formula a ser mostrada
 	 */
@@ -118,6 +121,8 @@ public class MainWindow extends Application{
 			out.close();  
 		}catch(Exception e){e.printStackTrace();}
 	}
+
+
 	public static void loadDirections() {
 		try {
 			ObjectInputStream in=new ObjectInputStream(new FileInputStream(ConstanteArchivo.RESOURCES_DIR + "/direcciones.txt"));  
